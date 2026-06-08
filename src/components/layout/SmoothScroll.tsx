@@ -19,7 +19,7 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
 
     ScrollTrigger.scrollerProxy(document.documentElement, {
       scrollTop(value) {
-        if (arguments.length) {
+        if (typeof value === "number") {
           lenis.scrollTo(value, { immediate: true });
         }
         return lenis.scroll;
