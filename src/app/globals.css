@@ -1,0 +1,94 @@
+@import "tailwindcss";
+@import "lenis/dist/lenis.css";
+
+:root {
+  --pudra-500: #221e20;
+  --pudra-100: #f9f7f6;
+  --pudra-200: #e2d7d2;
+  --pudra: #ece8e7;
+  --green: #909c87;
+  --green-secondary: #636d5c;
+  --gray-300: #514f56;
+  --gray-200: #949191;
+  --gray-100: #ebebeb;
+  --gray: #efefef;
+  --black: #18171b;
+  --white: #ffffff;
+  --background: var(--pudra-100);
+  --foreground: var(--pudra-500);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-pudra-500: var(--pudra-500);
+  --color-pudra-100: var(--pudra-100);
+  --color-pudra-200: var(--pudra-200);
+  --color-pudra: var(--pudra);
+  --color-green: var(--green);
+  --color-green-secondary: var(--green-secondary);
+  --color-gray-300: var(--gray-300);
+  --color-gray-200: var(--gray-200);
+  --color-gray-100: var(--gray-100);
+  --color-gray: var(--gray);
+  --color-black: var(--black);
+  --font-sans: var(--font-poppins);
+  --font-display: var(--font-playfair);
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-poppins), system-ui, sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-playfair), Georgia, serif;
+}
+
+/* Webflow: .heading-large / .heading-medium */
+.heading-large {
+  font-family: var(--font-playfair), Georgia, serif;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.heading-medium {
+  font-family: var(--font-playfair), Georgia, serif;
+  font-size: clamp(2rem, 5vw, 4.25rem);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.06em;
+}
+
+/* Hero / video: beli linkovi samo kad header nije u pill stanju */
+header[data-theme="light"]:not([data-scrolled="true"]) .header-link {
+  color: var(--white);
+}
+
+/* Posle scroll-a: bela pill → uvek tamni linkovi (čitljivo na svim pozadinama) */
+header[data-scrolled="true"] .header-link {
+  color: var(--pudra-500);
+}
+
+/* Krem sekcije (Sessions, Experts content, …) */
+header[data-theme="dark"] .header-link {
+  color: var(--pudra-500);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
