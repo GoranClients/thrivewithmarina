@@ -178,14 +178,14 @@ export function Contact() {
         <div className="flex w-full max-w-[540px] justify-center lg:shrink-0">
           <div
             ref={imageWrapRef}
-            className="relative aspect-[1/1.36] w-full max-w-[400px] overflow-hidden rounded-[500px] lg:max-w-[540px]"
+            className="relative aspect-[1/1.36] w-full max-w-[400px] overflow-hidden rounded-[500px] bg-[#E8E7E0] lg:max-w-[540px]"
           >
             <Image
               src="/assets/contact/contact.webp"
-              alt="Yoga instructor in studio"
+              alt="Marina meditating on a cushion in studio"
               fill
               sizes="(max-width: 1023px) 87vw, 540px"
-              className="object-cover object-center"
+              className="object-cover object-center scale-[1.12]"
             />
           </div>
         </div>
