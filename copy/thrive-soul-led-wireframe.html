@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Soul-Led Body Coaching — Thrive with Marina</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --cream: #F7F3EE; --cream-dark: #EDE8E0; --sand: #D9CFC2;
+    --gold: #B89A6A; --gold-light: #D4B88A; --gold-dark: #8A6E48;
+    --charcoal: #2C2720; --charcoal-mid: #4A4238; --warm-gray: #7A7068;
+    --white: #FDFAF7;
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font-body); background: var(--cream); color: var(--charcoal); font-size: 16px; line-height: 1.7; overflow-x: hidden; }
+
+  .wf-label { display: inline-block; font-family: var(--font-body); font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-dark); background: var(--cream-dark); border: 1px dashed var(--sand); padding: 3px 10px; border-radius: 100px; margin-bottom: 1rem; }
+  .wf-label-light { color: var(--gold-light); background: rgba(184,154,106,0.08); border-color: rgba(184,154,106,0.25); }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 4rem; height: 72px; background: rgba(247,243,238,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--sand); }
+  .nav-logo { font-family: var(--font-display); font-size: 1.4rem; font-weight: 500; color: var(--charcoal); text-decoration: none; }
+  .nav-logo span { color: var(--gold); }
+  .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+  .nav-links a { font-size: 0.82rem; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; color: var(--charcoal-mid); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+  .nav-cta { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white); background: var(--charcoal); padding: 0.65rem 1.5rem; border-radius: 2px; text-decoration: none; transition: background 0.2s; }
+  .nav-cta:hover { background: var(--gold-dark); }
+
+  .max-w { max-width: 1200px; margin: 0 auto; }
+  .eyebrow { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem; }
+  .eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); display: block; }
+  .eyebrow-center { justify-content: center; }
+  .eyebrow-center::before { display: none; }
+  .section-h { font-family: var(--font-display); font-size: clamp(2rem, 3.5vw, 3.2rem); font-weight: 300; line-height: 1.15; letter-spacing: -0.01em; color: var(--charcoal); }
+  .section-h em { font-style: italic; color: var(--gold-dark); font-weight: 400; }
+  .section-h-light { color: var(--white); }
+  .section-h-light em { color: var(--gold-light); }
+  .body-text { font-size: 0.95rem; font-weight: 300; color: var(--charcoal-mid); line-height: 1.85; }
+  .btn-primary { font-family: var(--font-body); font-size: 0.8rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--white); background: var(--charcoal); padding: 1rem 2.25rem; border-radius: 2px; text-decoration: none; display: inline-block; transition: background 0.25s, transform 0.2s; }
+  .btn-primary:hover { background: var(--gold-dark); transform: translateY(-1px); }
+  .btn-primary-light { font-family: var(--font-body); font-size: 0.8rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--charcoal); background: var(--gold-light); padding: 1rem 2.25rem; border-radius: 2px; text-decoration: none; display: inline-block; transition: background 0.25s, transform 0.2s; }
+  .btn-primary-light:hover { background: var(--gold); transform: translateY(-1px); }
+  .text-link { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-dark); text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; transition: gap 0.2s; }
+  .text-link::after { content: '→'; }
+  .text-link:hover { gap: 0.9rem; }
+
+  /* HERO */
+  .service-hero {
+    padding-top: 72px; min-height: 90vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    position: relative; overflow: hidden;
+  }
+  .service-hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 7rem 4rem 6rem; position: relative; z-index: 2;
+    background: var(--cream);
+  }
+  .service-type { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.75rem; }
+  .service-type::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
+  .service-hero-h1 { font-family: var(--font-display); font-size: clamp(2.75rem, 4.5vw, 4.25rem); font-weight: 300; line-height: 1.1; color: var(--charcoal); margin-bottom: 0.5rem; }
+  .service-hero-h1 em { font-style: italic; color: var(--gold-dark); }
+  .service-hero-tagline { font-family: var(--font-display); font-size: 1.25rem; font-style: italic; font-weight: 300; color: var(--warm-gray); margin-bottom: 1.75rem; line-height: 1.4; }
+  .service-hero-body { font-size: 0.97rem; font-weight: 300; color: var(--charcoal-mid); line-height: 1.85; max-width: 460px; margin-bottom: 2.5rem; }
+  .hero-ctas { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; }
+  .service-hero-right { position: relative; overflow: hidden; }
+  .service-hero-img { width: 100%; height: 100%; background: linear-gradient(150deg, var(--sand) 0%, var(--cream-dark) 40%, var(--gold-light) 100%); display: flex; align-items: flex-end; padding: 3rem; }
+  .img-label { font-family: var(--font-display); font-size: 0.85rem; font-style: italic; color: var(--gold-dark); opacity: 0.6; }
+
+  /* PROBLEM */
+  .problem-section { background: var(--charcoal); padding: 7rem 4rem; position: relative; overflow: hidden; }
+  .problem-section::before { content: ''; position: absolute; top: -1px; left: 0; right: 0; height: 60px; background: var(--cream); clip-path: ellipse(55% 100% at 50% 0%); }
+  .problem-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 5rem; align-items: center; max-width: 1100px; margin: 0 auto; }
+  .problem-statements { display: flex; flex-direction: column; gap: 1.5px; margin-top: 3rem; }
+  .problem-item { background: rgba(44,39,32,0.5); padding: 1.5rem 1.75rem; border-left: 0; position: relative; transition: background 0.3s; cursor: default; }
+  .problem-item:hover { background: rgba(184,154,106,0.1); }
+  .problem-item::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: var(--gold); transform: scaleY(0); transform-origin: top; transition: transform 0.35s; }
+  .problem-item:hover::before { transform: scaleY(1); }
+  .p-text { font-family: var(--font-display); font-size: 1.05rem; font-style: italic; color: var(--white); line-height: 1.5; }
+  .problem-closer-text { font-size: 0.9rem; font-weight: 300; color: rgba(253,250,247,0.6); line-height: 1.8; }
+  .problem-closer-highlight { font-family: var(--font-display); font-size: 1.6rem; font-style: italic; font-weight: 300; color: var(--gold-light); line-height: 1.35; margin: 1.5rem 0; }
+
+  /* PILLARS */
+  .pillars-section { padding: 8rem 4rem; background: var(--white); }
+  .pillars-header { text-align: center; margin-bottom: 5rem; }
+  .pillars-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; max-width: 1100px; margin: 0 auto; }
+  .pillar-card { background: var(--cream); padding: 2.5rem 2rem; position: relative; transition: transform 0.3s; }
+  .pillar-card:hover { transform: translateY(-4px); }
+  .pillar-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--gold), var(--gold-light)); transform: scaleX(0); transform-origin: left; transition: transform 0.35s; }
+  .pillar-card:hover::after { transform: scaleX(1); }
+  .pillar-num { font-family: var(--font-display); font-size: 4rem; font-weight: 300; color: rgba(184,154,106,0.2); line-height: 1; margin-bottom: 1rem; }
+  .pillar-title { font-family: var(--font-display); font-size: 1.25rem; font-weight: 500; color: var(--charcoal); margin-bottom: 0.75rem; }
+  .pillar-body { font-size: 0.85rem; font-weight: 300; color: var(--warm-gray); line-height: 1.7; }
+
+  /* FOR WHO */
+  .for-section { padding: 8rem 4rem; background: var(--cream-dark); display: grid; grid-template-columns: 1fr 1.25fr; gap: 6rem; align-items: center; }
+  .for-content { max-width: 1100px; margin: 0 auto; }
+  .for-list { display: flex; flex-direction: column; gap: 1.5px; margin-top: 3rem; }
+  .for-item { background: var(--white); padding: 1.5rem 1.75rem; display: flex; align-items: flex-start; gap: 1.25rem; transition: transform 0.2s; }
+  .for-item:hover { transform: translateX(4px); }
+  .for-check { width: 20px; height: 20px; border-radius: 50%; border: 1px solid var(--gold); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; font-size: 10px; color: var(--gold); }
+  .for-text { font-size: 0.9rem; font-weight: 300; color: var(--charcoal-mid); line-height: 1.65; }
+  .for-visual { background: var(--charcoal); padding: 3.5rem; position: relative; overflow: hidden; }
+  .for-visual::before { content: ''; position: absolute; top: -30px; right: -30px; width: 160px; height: 160px; border-radius: 50%; border: 1px solid rgba(184,154,106,0.15); }
+  .for-visual-title { font-family: var(--font-display); font-size: 1.5rem; font-weight: 300; color: var(--white); margin-bottom: 1.5rem; position: relative; z-index: 1; }
+  .for-visual-title em { font-style: italic; color: var(--gold-light); }
+  .benefit-list { display: flex; flex-direction: column; gap: 1rem; position: relative; z-index: 1; }
+  .benefit-item { display: flex; align-items: flex-start; gap: 0.75rem; }
+  .benefit-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 7px; }
+  .benefit-text { font-size: 0.87rem; color: rgba(253,250,247,0.75); line-height: 1.55; }
+
+  /* TESTIMONIALS */
+  .testimonials-section { background: var(--cream); padding: 8rem 4rem; }
+  .testimonials-header { text-align: center; margin-bottom: 4.5rem; }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; max-width: 900px; margin: 0 auto 3.5rem; }
+  .testimonial-card { background: var(--white); padding: 2.5rem 2.25rem; }
+  .t-quote-mark { font-family: var(--font-display); font-size: 4rem; line-height: 0.6; color: var(--gold-light); margin-bottom: 1rem; font-weight: 300; }
+  .t-text { font-family: var(--font-display); font-size: 1.05rem; font-style: italic; font-weight: 300; color: var(--charcoal-mid); line-height: 1.65; margin-bottom: 1.5rem; }
+  .t-name { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-dark); }
+  .t-role { font-size: 0.75rem; color: var(--warm-gray); margin-top: 0.2rem; }
+
+  /* CTA FINAL */
+  .final-cta { background: var(--charcoal); padding: 8rem 4rem; text-align: center; position: relative; overflow: hidden; }
+  .final-cta::before { content: ''; position: absolute; top: -1px; left: 0; right: 0; height: 60px; background: var(--cream); clip-path: ellipse(55% 100% at 50% 0%); }
+  .final-cta-inner { max-width: 640px; margin: 0 auto; position: relative; z-index: 1; }
+  .final-cta h2 { font-family: var(--font-display); font-size: clamp(2.25rem, 4vw, 3.5rem); font-weight: 300; color: var(--white); line-height: 1.2; margin-bottom: 1.25rem; }
+  .final-cta h2 em { font-style: italic; color: var(--gold-light); }
+  .final-cta p { font-size: 0.95rem; font-weight: 300; color: rgba(253,250,247,0.65); line-height: 1.8; margin-bottom: 2.5rem; max-width: 480px; margin-left: auto; margin-right: auto; }
+
+  footer { background: var(--charcoal); padding: 3rem 4rem; border-top: 1px solid rgba(255,255,255,0.06); }
+  .footer-bottom { display: flex; align-items: center; justify-content: space-between; font-size: 0.75rem; color: rgba(253,250,247,0.3); max-width: 1200px; margin: 0 auto; }
+  .footer-links-row { display: flex; gap: 2rem; }
+  .footer-links-row a { font-size: 0.75rem; color: rgba(253,250,247,0.4); text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
+  .footer-links-row a:hover { color: var(--gold-light); }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  .fade-up { opacity: 0; animation: fadeUp 0.7s ease forwards; }
+  .fade-up:nth-child(1) { animation-delay: 0.1s; }
+  .fade-up:nth-child(2) { animation-delay: 0.25s; }
+  .fade-up:nth-child(3) { animation-delay: 0.4s; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Thrive <span>with Marina</span></a>
+  <ul class="nav-links">
+    <li><a href="#">About</a></li>
+    <li><a href="#" class="active">Soul-Led Body Coaching</a></li>
+    <li><a href="#">HeartLead Mentoring</a></li>
+    <li><a href="#">Blog</a></li>
+    <li><a href="#">Free Breathwork</a></li>
+  </ul>
+  <a href="#" class="nav-cta">Book a Clarity Call</a>
+</nav>
+
+<!-- HERO -->
+<section class="service-hero">
+  <div class="service-hero-left">
+    <div class="wf-label">Sekcija 1 — Hero</div>
+    <p class="service-type">Soul-Led Body Coaching</p>
+    <h1 class="service-hero-h1 fade-up">
+      Transform your body.<br><em>Elevate your vitality.</em>
+    </h1>
+    <p class="service-hero-tagline fade-up">For women who are done accepting exhaustion, hormonal chaos, and low energy as the price of success.</p>
+    <p class="service-hero-body fade-up">Your body isn't failing you. It's speaking to you. And when you learn to listen — with the right tools, the right guidance, and a truly holistic approach — everything changes. Not just how you look or feel, but how you lead, love, and live.</p>
+    <div class="hero-ctas">
+      <a href="#" class="btn-primary">Book a Clarity Call</a>
+      <a href="#pillars" class="text-link">See how it works</a>
+    </div>
+  </div>
+  <div class="service-hero-right">
+    <div class="service-hero-img">
+      <span class="img-label">[ Marina — coaching photo ]</span>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem-section">
+  <div class="max-w">
+    <div class="wf-label wf-label-light">Sekcija 2 — Problem Mirror</div>
+    <div class="problem-grid">
+      <div>
+        <p class="eyebrow" style="color: var(--gold-light);">Sound familiar?</p>
+        <h2 class="section-h section-h-light" style="margin-bottom: 1.5rem;">Your body is sending signals.<br><em>Are you listening?</em></h2>
+        <p class="problem-closer-text">Extra weight that won't shift no matter what you try. Exhaustion a good night's sleep doesn't fix. Anxiety that spikes for no clear reason.</p>
+        <p class="problem-closer-highlight">These aren't random inconveniences. They are the body's language.</p>
+        <p class="problem-closer-text">The mind and body are not separate systems. When one is out of alignment, both suffer — and no amount of willpower alone creates lasting change.</p>
+        <div style="margin-top: 2rem;">
+          <a href="#" class="btn-primary-light">Book a Clarity Call</a>
+        </div>
+      </div>
+      <div>
+        <div class="problem-statements">
+          <div class="problem-item"><p class="p-text">"I'm doing everything right — workouts, clean food, meditation — and still waking up exhausted."</p></div>
+          <div class="problem-item"><p class="p-text">"My weight just won't shift, no matter what I try. I don't understand what's wrong with me."</p></div>
+          <div class="problem-item"><p class="p-text">"I feel anxious for no reason. My sleep is terrible. My hormones are all over the place."</p></div>
+          <div class="problem-item"><p class="p-text">"I know my body could feel better than this. I just don't know how to get there."</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section class="pillars-section" id="pillars">
+  <div class="pillars-header">
+    <div class="wf-label">Sekcija 3 — 4 Stuba</div>
+    <p class="eyebrow eyebrow-center">How we work together</p>
+    <h2 class="section-h" style="max-width: 500px; margin: 0.5rem auto 0;">A holistic approach<br>across <em>4 pillars</em></h2>
+  </div>
+
+  <div class="pillars-grid">
+    <div class="pillar-card">
+      <div class="pillar-num">01</div>
+      <p class="pillar-title">Biology</p>
+      <p class="pillar-body">We address the physical root causes — sleep, nutrition, hormones, movement, and your body's unique environment — in a way that fits your life, not a generic protocol.</p>
+    </div>
+    <div class="pillar-card">
+      <div class="pillar-num">02</div>
+      <p class="pillar-title">Mindset & Energy</p>
+      <p class="pillar-body">We identify the unconscious patterns — traumas, self-talk, conditioning — that quietly undermine your results, and replace them with patterns built for genuine performance.</p>
+    </div>
+    <div class="pillar-card">
+      <div class="pillar-num">03</div>
+      <p class="pillar-title">Structure & Rhythm</p>
+      <p class="pillar-body">We build a sustainable daily structure — one you actually enjoy — that keeps your energy high, your boundaries clear, and your body consistently supported.</p>
+    </div>
+    <div class="pillar-card">
+      <div class="pillar-num">04</div>
+      <p class="pillar-title">Authentic Leadership</p>
+      <p class="pillar-body">We integrate your physical vitality into how you show up — as a leader, a creator, a human being — so that your health becomes the foundation of everything you build.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOR WHO + BENEFITS -->
+<section style="padding: 8rem 4rem; background: var(--cream-dark);">
+  <div style="display: grid; grid-template-columns: 1.25fr 1fr; gap: 5rem; align-items: start; max-width: 1100px; margin: 0 auto;">
+    <div>
+      <div class="wf-label">Sekcija 4 — Za koga je</div>
+      <p class="eyebrow">This is for you if...</p>
+      <h2 class="section-h" style="font-size: clamp(1.75rem, 2.5vw, 2.5rem); margin-bottom: 2.5rem;">You recognize<br><em>yourself here.</em></h2>
+      <div class="for-list">
+        <div class="for-item"><div class="for-check">✓</div><p class="for-text">You're driven and capable — but your body is running on empty and you're tired of pushing through it.</p></div>
+        <div class="for-item"><div class="for-check">✓</div><p class="for-text">You want real, lasting changes to your health — and you're ready to invest the time and openness it takes.</p></div>
+        <div class="for-item"><div class="for-check">✓</div><p class="for-text">You're willing to look honestly at where you are right now — without judgment, but with clarity.</p></div>
+        <div class="for-item"><div class="for-check">✓</div><p class="for-text">You want to lead yourself the way you lead everything else — with intention, strategy, and full commitment.</p></div>
+        <div class="for-item"><div class="for-check">✓</div><p class="for-text">You're open to being guided, challenged, and supported — not just given a plan and left alone.</p></div>
+        <div class="for-item"><div class="for-check">✓</div><p class="for-text">You believe that your physical vitality and your life's purpose are deeply connected.</p></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="wf-label">Sekcija 5 — Benefiti</div>
+      <div class="for-visual">
+        <p class="for-visual-title">What becomes <em>possible</em></p>
+        <div class="benefit-list">
+          <div class="benefit-item"><div class="benefit-dot"></div><p class="benefit-text">More energy — consistently, not in peaks and crashes</p></div>
+          <div class="benefit-item"><div class="benefit-dot"></div><p class="benefit-text">A body that feels like your ally, not your obstacle</p></div>
+          <div class="benefit-item"><div class="benefit-dot"></div><p class="benefit-text">Freedom from the cycle of stress, poor sleep, and anxiety</p></div>
+          <div class="benefit-item"><div class="benefit-dot"></div><p class="benefit-text">Habits that support you — not ones you force yourself through</p></div>
+          <div class="benefit-item"><div class="benefit-dot"></div><p class="benefit-text">Stronger intuition and mental clarity in daily decisions</p></div>
+          <div class="benefit-item"><div class="benefit-dot"></div><p class="benefit-text">A physical foundation strong enough to match your vision</p></div>
+        </div>
+        <div style="margin-top: 2.5rem;">
+          <a href="#" class="btn-primary-light">Book a Clarity Call →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="max-w">
+    <div class="testimonials-header">
+      <div class="wf-label">Sekcija 6 — Testimonijali</div>
+      <p class="eyebrow eyebrow-center">Client stories</p>
+      <h2 class="section-h" style="font-size: clamp(2rem, 3vw, 2.75rem); max-width: 480px; margin: 0.5rem auto 0;">Women who chose <em>their body.</em></h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="t-quote-mark">"</div>
+        <p class="t-text">Marina was the answer to my prayers for a coach who truly understood the connection between the mind, body, and lasting transformation. She didn't just change my workouts — she changed the way I inhabit my body.</p>
+        <p class="t-name">Natasha Rockstrom</p>
+        <p class="t-role">Entrepreneur</p>
+      </div>
+      <div class="testimonial-card">
+        <div class="t-quote-mark">"</div>
+        <p class="t-text">The sessions with Marina pushed me slowly to do more and more. It was so much more enjoyable than I ever imagined — like spending an hour with a friend who also happens to know exactly what your body needs.</p>
+        <p class="t-name">Plamena Petrova</p>
+        <p class="t-role">Client</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="final-cta-inner">
+    <div class="wf-label wf-label-light">Sekcija 7 — CTA</div>
+    <h2>Your body is ready.<br><em>Are you?</em></h2>
+    <p>Book a free Clarity Call. We'll talk about where you are, what's not working, and whether Soul-Led Body Coaching is the right path for you.</p>
+    <a href="#" class="btn-primary-light">Book a Clarity Call</a>
+    <p style="font-size: 0.78rem; color: rgba(253,250,247,0.35); margin-top: 1rem;">No pressure. No pitch. Just an honest conversation.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-bottom">
+    <p>© Thrive with Marina 2026</p>
+    <div class="footer-links-row">
+      <a href="#">About</a>
+      <a href="#">HeartLead Mentoring</a>
+      <a href="#">Blog</a>
+      <a href="#">Instagram</a>
+      <a href="#">Privacy Policy</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

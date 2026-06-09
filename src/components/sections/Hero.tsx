@@ -7,6 +7,10 @@ import { useRef } from "react";
 
 import { Button } from "@/components/ui/Button";
 import { containerClass, heroTitleClass } from "@/lib/layout";
+import {
+  CALENDLY_CLARITY_CALL_URL,
+  FREE_BREATHWORK_ANCHOR,
+} from "@/lib/site";
 
 const carouselImages = [
   "/assets/hero/carousel-1.jpg",
@@ -87,13 +91,11 @@ export function Hero() {
         <h1
           className={`${heroTitleClass} order-1 text-center text-white md:order-none md:col-start-1 md:row-start-1 md:text-left`}
         >
+          <span className="block">You&apos;ve built</span>
+          <span className="block">the success.</span>
           <span className="block">
-            Discover <span className="italic">balance</span> and
+            But your body is <span className="italic">running on empty.</span>
           </span>
-          <span className="block">
-            <span className="italic">inner harmony</span> at our
-          </span>
-          <span className="block">yoga studio</span>
         </h1>
 
         <div className="order-2 mx-auto flex w-full max-w-[280px] justify-center md:order-none md:col-start-2 md:row-span-3 md:row-start-1 md:mx-0 md:max-w-[324px] md:self-center">
@@ -112,13 +114,17 @@ export function Hero() {
         </div>
 
         <p className="order-3 max-w-[28.5556em] text-center text-base leading-[1.4] tracking-[-0.02em] text-white md:order-none md:col-start-1 md:row-start-2 md:text-left md:text-lg">
-          We believe in the transformative power of yoga to nurture not just the
-          body, but also the mind and soul.
+          I help visionary women lead from a regulated nervous system — so your
+          energy, your presence, and your legacy finally match the vision you
+          carry inside.
         </p>
 
-        <div className="order-4 flex justify-center md:order-none md:col-start-1 md:row-start-3 md:justify-start">
-          <Button href="#Contact" variant="primary">
-            Contact
+        <div className="order-4 flex flex-wrap justify-center gap-4 md:order-none md:col-start-1 md:row-start-3 md:justify-start">
+          <Button href={CALENDLY_CLARITY_CALL_URL} variant="primary">
+            Book a Clarity Call
+          </Button>
+          <Button href={FREE_BREATHWORK_ANCHOR} variant="secondary">
+            Free Breathwork Practice
           </Button>
         </div>
       </div>

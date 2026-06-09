@@ -67,8 +67,8 @@ function SessionsHeading({ className = "" }: { className?: string }) {
     <h2
       className={`${sessionsTitleClass} mx-auto text-center ${className}`}
     >
-      Yoga sessions this{" "}
-      <span className="italic">find balance</span> and inner peace
+      This isn&apos;t just spirituality.{" "}
+      <span className="italic">It&apos;s science.</span>
     </h2>
   );
 }

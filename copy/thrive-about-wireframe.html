@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Marina — Thrive with Marina</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F7F3EE;
+    --cream-dark: #EDE8E0;
+    --sand: #D9CFC2;
+    --gold: #B89A6A;
+    --gold-light: #D4B88A;
+    --gold-dark: #8A6E48;
+    --charcoal: #2C2720;
+    --charcoal-mid: #4A4238;
+    --warm-gray: #7A7068;
+    --white: #FDFAF7;
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-body);
+    background: var(--cream);
+    color: var(--charcoal);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  .wf-label {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+    background: var(--cream-dark);
+    border: 1px dashed var(--sand);
+    padding: 3px 10px;
+    border-radius: 100px;
+    margin-bottom: 1rem;
+  }
+  .wf-label-light {
+    color: var(--gold-light);
+    background: rgba(184,154,106,0.08);
+    border-color: rgba(184,154,106,0.25);
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 4rem; height: 72px;
+    background: rgba(247,243,238,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--sand);
+  }
+  .nav-logo { font-family: var(--font-display); font-size: 1.4rem; font-weight: 500; color: var(--charcoal); text-decoration: none; }
+  .nav-logo span { color: var(--gold); }
+  .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+  .nav-links a { font-size: 0.82rem; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; color: var(--charcoal-mid); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-links a.active { color: var(--gold); }
+  .nav-cta { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white); background: var(--charcoal); padding: 0.65rem 1.5rem; border-radius: 2px; text-decoration: none; transition: background 0.2s; }
+  .nav-cta:hover { background: var(--gold-dark); }
+
+  /* UTILS */
+  .max-w { max-width: 1200px; margin: 0 auto; }
+  .text-center { text-align: center; }
+  .eyebrow { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem; }
+  .eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); display: block; }
+  .eyebrow-center { justify-content: center; }
+  .eyebrow-center::before { display: none; }
+  .section-h { font-family: var(--font-display); font-size: clamp(2rem, 3.5vw, 3.2rem); font-weight: 300; line-height: 1.15; letter-spacing: -0.01em; color: var(--charcoal); }
+  .section-h em { font-style: italic; color: var(--gold-dark); font-weight: 400; }
+  .section-h-light { color: var(--white); }
+  .body-text { font-size: 0.95rem; font-weight: 300; color: var(--charcoal-mid); line-height: 1.85; }
+  .btn-primary { font-family: var(--font-body); font-size: 0.8rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--white); background: var(--charcoal); padding: 1rem 2.25rem; border-radius: 2px; text-decoration: none; display: inline-block; transition: background 0.25s, transform 0.2s; }
+  .btn-primary:hover { background: var(--gold-dark); transform: translateY(-1px); }
+  .text-link { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-dark); text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; transition: gap 0.2s; }
+  .text-link::after { content: '→'; }
+  .text-link:hover { gap: 0.9rem; }
+
+  /* HERO */
+  .about-hero {
+    padding-top: 72px;
+    min-height: 85vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 7rem 4rem 6rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .about-hero-h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 4.5vw, 4rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--charcoal);
+    margin-bottom: 1.5rem;
+  }
+  .about-hero-h1 em { font-style: italic; color: var(--gold-dark); }
+
+  .about-hero-sub {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--warm-gray);
+    line-height: 1.5;
+    margin-bottom: 2.5rem;
+    max-width: 420px;
+  }
+
+  .about-hero-right {
+    position: relative;
+    overflow: hidden;
+  }
+  .about-hero-img {
+    width: 100%; height: 100%;
+    background: linear-gradient(160deg, var(--sand) 0%, var(--cream-dark) 50%, var(--gold-light) 100%);
+    display: flex; align-items: flex-end; padding: 3rem;
+  }
+  .about-hero-img-label { font-family: var(--font-display); font-size: 0.85rem; font-style: italic; color: var(--gold-dark); opacity: 0.6; }
+
+  .hero-decor-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid var(--sand);
+    pointer-events: none;
+  }
+
+  /* STORY SECTION */
+  .story-section {
+    padding: 8rem 4rem;
+    background: var(--white);
+  }
+
+  .story-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 5rem;
+    align-items: start;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .story-sidebar {
+    position: sticky;
+    top: 100px;
+  }
+
+  .story-chapter-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 2rem;
+  }
+
+  .chapter-link {
+    font-size: 0.78rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    padding: 0.75rem 0;
+    border-top: 1px solid var(--sand);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: color 0.2s;
+  }
+  .chapter-link:last-child { border-bottom: 1px solid var(--sand); }
+  .chapter-link:hover, .chapter-link.active { color: var(--gold-dark); }
+  .chapter-link.active::after { content: '—'; color: var(--gold); }
+
+  .story-content {
+    padding-top: 0.5rem;
+  }
+
+  .story-chapter {
+    margin-bottom: 4.5rem;
+    padding-bottom: 4.5rem;
+    border-bottom: 1px solid var(--cream-dark);
+  }
+  .story-chapter:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+  .chapter-num {
+    font-family: var(--font-display);
+    font-size: 5rem;
+    font-weight: 300;
+    color: rgba(184,154,106,0.15);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .chapter-title {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--charcoal);
+    margin-bottom: 1.5rem;
+    line-height: 1.3;
+  }
+
+  .chapter-body {
+    font-size: 0.97rem;
+    font-weight: 300;
+    color: var(--charcoal-mid);
+    line-height: 1.9;
+    margin-bottom: 1rem;
+  }
+
+  .chapter-pullquote {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--charcoal);
+    padding: 1.5rem 2rem;
+    border-left: 3px solid var(--gold);
+    background: var(--cream);
+    line-height: 1.55;
+    margin: 1.75rem 0;
+  }
+
+  /* METHODS */
+  .methods-section {
+    padding: 8rem 4rem;
+    background: var(--cream-dark);
+  }
+
+  .methods-header {
+    max-width: 560px;
+    margin-bottom: 4.5rem;
+  }
+
+  .methods-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    max-width: 1100px;
+    margin: 0 auto 4rem;
+  }
+
+  .method-card {
+    background: var(--white);
+    padding: 2.25rem 1.75rem;
+    position: relative;
+    transition: transform 0.3s;
+  }
+  .method-card:hover { transform: translateY(-3px); }
+  .method-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0; height: 2px;
+    background: var(--gold);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.35s;
+  }
+  .method-card:hover::after { transform: scaleX(1); }
+
+  .method-icon {
+    width: 40px; height: 40px;
+    background: var(--cream-dark);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.25rem;
+    font-size: 1.1rem;
+  }
+
+  .method-title {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--charcoal);
+    margin-bottom: 0.6rem;
+    line-height: 1.3;
+  }
+
+  .method-body {
+    font-size: 0.83rem;
+    font-weight: 300;
+    color: var(--warm-gray);
+    line-height: 1.65;
+  }
+
+  .ns-energetics-block {
+    background: var(--charcoal);
+    padding: 3rem 3.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+  }
+
+  .ns-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 0.75rem;
+  }
+
+  .ns-title {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1.25;
+    flex-shrink: 0;
+    max-width: 280px;
+  }
+  .ns-title em { font-style: italic; color: var(--gold-light); }
+
+  .ns-body {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: rgba(253,250,247,0.65);
+    line-height: 1.8;
+  }
+
+  /* CREDENTIALS */
+  .creds-section {
+    padding: 8rem 4rem;
+    background: var(--cream);
+  }
+
+  .creds-header {
+    text-align: center;
+    margin-bottom: 4.5rem;
+  }
+
+  .creds-numbers {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    max-width: 1100px;
+    margin: 0 auto 3rem;
+  }
+
+  .cred-stat {
+    background: var(--white);
+    padding: 3rem 2rem;
+    text-align: center;
+    position: relative;
+  }
+
+  .cred-number {
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    font-weight: 300;
+    color: var(--gold-dark);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .cred-label {
+    font-size: 0.82rem;
+    font-weight: 400;
+    color: var(--warm-gray);
+    line-height: 1.5;
+  }
+
+  .certs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .cert-item {
+    padding: 1.5rem 1.75rem;
+    border: 1px solid var(--sand);
+    background: var(--white);
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .cert-dot {
+    width: 8px; height: 8px;
+    background: var(--gold);
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 6px;
+  }
+
+  .cert-text {
+    font-size: 0.88rem;
+    font-weight: 400;
+    color: var(--charcoal-mid);
+    line-height: 1.5;
+  }
+
+  .cert-note {
+    font-size: 0.75rem;
+    color: var(--warm-gray);
+    font-style: italic;
+    margin-top: 0.2rem;
+  }
+
+  /* VALUES */
+  .values-section {
+    padding: 8rem 4rem;
+    background: var(--charcoal);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .values-section::before {
+    content: '';
+    position: absolute;
+    top: -1px; left: 0; right: 0; height: 60px;
+    background: var(--cream);
+    clip-path: ellipse(55% 100% at 50% 0%);
+  }
+
+  .values-header {
+    text-align: center;
+    margin-bottom: 4.5rem;
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .value-card {
+    background: rgba(44,39,32,0.5);
+    padding: 3rem 2.5rem;
+    position: relative;
+    transition: background 0.3s;
+  }
+  .value-card:hover { background: rgba(184,154,106,0.1); }
+
+  .value-num {
+    font-family: var(--font-display);
+    font-size: 4rem;
+    font-weight: 300;
+    color: rgba(184,154,106,0.15);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  .value-title {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--white);
+    margin-bottom: 0.75rem;
+    line-height: 1.35;
+  }
+
+  .value-body {
+    font-size: 0.88rem;
+    font-weight: 300;
+    color: rgba(253,250,247,0.6);
+    line-height: 1.75;
+  }
+
+  /* CTA FINAL */
+  .about-cta-section {
+    padding: 9rem 4rem;
+    background: var(--cream);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .cta-text-block {}
+
+  .cta-big-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 4vw, 3.75rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--charcoal);
+    margin-bottom: 1.5rem;
+  }
+  .cta-big-title em { font-style: italic; color: var(--gold-dark); }
+
+  .cta-body {
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: var(--charcoal-mid);
+    line-height: 1.85;
+    margin-bottom: 2.5rem;
+  }
+
+  .cta-visual {
+    background: var(--charcoal);
+    padding: 3.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-visual::before {
+    content: '';
+    position: absolute;
+    bottom: -40px; right: -40px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    border: 1px solid rgba(184,154,106,0.15);
+  }
+
+  .clarity-call-box {
+    position: relative; z-index: 1;
+  }
+
+  .cc-label {
+    font-size: 0.7rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gold-light); margin-bottom: 0.75rem;
+  }
+
+  .cc-title {
+    font-family: var(--font-display);
+    font-size: 1.75rem; font-weight: 300;
+    color: var(--white); line-height: 1.3; margin-bottom: 1.5rem;
+  }
+  .cc-title em { font-style: italic; color: var(--gold-light); }
+
+  .cc-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    margin-bottom: 2rem;
+  }
+
+  .cc-list li {
+    font-size: 0.87rem;
+    color: rgba(253,250,247,0.7);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    line-height: 1.5;
+  }
+
+  .cc-check {
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    border: 1px solid var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+    font-size: 9px;
+    color: var(--gold-light);
+  }
+
+  .btn-primary-light {
+    font-family: var(--font-body);
+    font-size: 0.8rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--charcoal);
+    background: var(--gold-light);
+    padding: 1rem 2.25rem; border-radius: 2px; text-decoration: none;
+    display: inline-block; transition: background 0.25s, transform 0.2s;
+  }
+  .btn-primary-light:hover { background: var(--gold); transform: translateY(-1px); }
+
+  .cc-disclaimer {
+    font-size: 0.75rem;
+    color: rgba(253,250,247,0.35);
+    margin-top: 1rem;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--charcoal);
+    padding: 5rem 4rem 3rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .footer-top {
+    display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 4rem;
+    margin-bottom: 4rem; padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .footer-logo { font-family: var(--font-display); font-size: 1.5rem; font-weight: 400; color: var(--white); margin-bottom: 1rem; }
+  .footer-logo span { color: var(--gold-light); font-style: italic; }
+  .footer-tagline { font-size: 0.85rem; font-weight: 300; color: rgba(253,250,247,0.5); line-height: 1.65; margin-bottom: 1.5rem; max-width: 240px; }
+  .footer-tree { font-size: 0.78rem; color: rgba(253,250,247,0.4); }
+  .footer-col-title { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 1.25rem; }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+  .footer-links a { font-size: 0.85rem; font-weight: 300; color: rgba(253,250,247,0.55); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--gold-light); }
+  .footer-bottom { display: flex; align-items: center; justify-content: space-between; font-size: 0.75rem; color: rgba(253,250,247,0.3); }
+  .social-links { display: flex; gap: 1.25rem; }
+  .social-links a { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(253,250,247,0.4); text-decoration: none; transition: color 0.2s; }
+  .social-links a:hover { color: var(--gold-light); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-up { opacity: 0; animation: fadeUp 0.7s ease forwards; }
+  .fade-up:nth-child(1) { animation-delay: 0.1s; }
+  .fade-up:nth-child(2) { animation-delay: 0.25s; }
+  .fade-up:nth-child(3) { animation-delay: 0.4s; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Thrive <span>with Marina</span></a>
+  <ul class="nav-links">
+    <li><a href="#" class="active">About</a></li>
+    <li><a href="#">Soul-Led Body Coaching</a></li>
+    <li><a href="#">HeartLead Mentoring</a></li>
+    <li><a href="#">Blog</a></li>
+    <li><a href="#">Free Breathwork</a></li>
+  </ul>
+  <a href="#" class="nav-cta">Book a Clarity Call</a>
+</nav>
+
+<!-- HERO -->
+<section class="about-hero">
+  <div class="about-hero-left">
+    <div class="wf-label">Sekcija 1 — Hero</div>
+    <p class="eyebrow">About Marina</p>
+    <h1 class="about-hero-h1 fade-up">
+      I'm Marina Savic —<br>and I've spent 16 years<br>learning how to <em>stop surviving</em><br>and start living in<br>this body.
+    </h1>
+    <p class="about-hero-sub fade-up">Today I guide visionary women to do the same.</p>
+    <a href="#story" class="text-link fade-up">Read my story</a>
+  </div>
+  <div class="about-hero-right">
+    <div class="about-hero-img">
+      <span class="about-hero-img-label">[ Marina — full portrait photo ]</span>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="story-section" id="story">
+  <div class="story-grid">
+
+    <div class="story-sidebar">
+      <div class="wf-label">Sekcija 2 — Priča</div>
+      <p class="eyebrow" style="margin-top: 1rem;">My journey</p>
+      <h2 class="section-h" style="font-size: 1.75rem; margin-bottom: 1.5rem;">A story told<br>through the <em>body.</em></h2>
+      <nav class="story-chapter-nav">
+        <a href="#ch1" class="chapter-link active">Where I came from</a>
+        <a href="#ch2" class="chapter-link">The turning point</a>
+        <a href="#ch3" class="chapter-link">What I've witnessed</a>
+        <a href="#ch4" class="chapter-link">My mission today</a>
+      </nav>
+    </div>
+
+    <div class="story-content">
+      <div class="story-chapter" id="ch1">
+        <div class="chapter-num">01</div>
+        <h3 class="chapter-title">Where I came from</h3>
+        <p class="chapter-body">I didn't come to this work through a certification. I came through my own body. Growing up, I learned that performance was survival — that to be worthy, you had to push, produce, and prove. My body became the thing I managed, not the home I lived in.</p>
+        <p class="chapter-body">For years I chased health through discipline. I worked out harder, ate cleaner, meditated longer. And still something felt off — a low-grade exhaustion that no routine could fix, a sense of being slightly outside of myself no matter what I did.</p>
+        <div class="chapter-pullquote">
+          "I was doing everything 'right' — and still couldn't feel truly well. That gap became the question that changed everything."
+        </div>
+      </div>
+
+      <div class="story-chapter" id="ch2">
+        <div class="chapter-num">02</div>
+        <h3 class="chapter-title">The turning point</h3>
+        <p class="chapter-body">The turning point came when I started studying the nervous system — not just as anatomy, but as the living architecture of how we feel safe, create, love, and lead. I discovered breathwork, somatic movement, and the science of trauma and regulation.</p>
+        <p class="chapter-body">I realized that everything I had been working so hard to fix on the outside was actually asking to be healed from within. The body wasn't the problem. The body was the portal.</p>
+        <div class="chapter-pullquote">
+          "You can't think your way into a thriving body. You have to feel your way back."
+        </div>
+        <p class="chapter-body">Over the next years, I immersed myself in every methodology that could help me understand this connection — from biohacking and neuroscience to trauma-informed somatic work and breathwork facilitation. I became my own most devoted student.</p>
+      </div>
+
+      <div class="story-chapter" id="ch3">
+        <div class="chapter-num">03</div>
+        <h3 class="chapter-title">What I've witnessed</h3>
+        <p class="chapter-body">Over 16 years working with leaders, entrepreneurs, and women in transition, I've seen the same pattern again and again: brilliant, driven women whose bodies are quietly screaming for a different way — but who haven't been given the tools to listen.</p>
+        <p class="chapter-body">Women who have built businesses, led teams, and created real impact in the world — while quietly running on adrenaline, disconnected from their own bodies, leading from fear instead of from truth.</p>
+        <div class="chapter-pullquote">
+          "The most successful women I know are often the most exhausted. And the solution is never more strategy — it's always more safety."
+        </div>
+      </div>
+
+      <div class="story-chapter" id="ch4">
+        <div class="chapter-num">04</div>
+        <h3 class="chapter-title">My mission today</h3>
+        <p class="chapter-body">My work isn't about fixing you. You are not broken. It's about returning you to yourself — so you can lead, create, and love from a place of genuine wholeness, not performance.</p>
+        <p class="chapter-body">I believe the world changes when women lead from a regulated nervous system and a vital, nourished body. That is the foundation I help women build — one breath, one session, one embodied decision at a time.</p>
+        <div style="margin-top: 2rem;">
+          <a href="#" class="btn-primary">Book a Clarity Call</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- METHODS -->
+<section class="methods-section">
+  <div class="max-w">
+    <div class="wf-label">Sekcija 3 — Pristup i metode</div>
+    <div class="methods-header">
+      <p class="eyebrow">How I work</p>
+      <h2 class="section-h">Spiritually grounded.<br><em>Scientifically informed.</em></h2>
+    </div>
+
+    <div class="methods-grid">
+      <div class="method-card">
+        <div class="method-icon">🌬️</div>
+        <p class="method-title">Transformational Breathwork</p>
+        <p class="method-body">The fastest, most direct path to the nervous system. Used for healing, releasing stored emotion, and accessing expanded states of clarity.</p>
+      </div>
+      <div class="method-card">
+        <div class="method-icon">🧬</div>
+        <p class="method-body-title method-title">Biohacking & Biology</p>
+        <p class="method-body">Sleep, nutrition, hormones, HRV — understanding your body's unique biology so we can support it precisely, not generically.</p>
+      </div>
+      <div class="method-card">
+        <div class="method-icon">🌿</div>
+        <p class="method-title">Somatic Movement</p>
+        <p class="method-body">Movement that works with the body's intelligence — releasing tension patterns, restoring range, and rebuilding a felt sense of safety in the body.</p>
+      </div>
+      <div class="method-card">
+        <div class="method-icon">🧠</div>
+        <p class="method-title">Cognitive Coaching</p>
+        <p class="method-body">Identifying and rewiring the unconscious patterns — beliefs, identities, stories — that quietly keep you in survival mode despite your best intentions.</p>
+      </div>
+    </div>
+
+    <div class="ns-energetics-block" style="margin-top: 2px;">
+      <div style="flex-shrink:0;">
+        <p class="ns-label">Marina's Integrated Framework</p>
+        <p class="ns-title">Nervous System<br><em>Energetics™</em></p>
+      </div>
+      <p class="ns-body">All four pillars come together in the methodology I've developed over 16 years: Nervous System Energetics™ — a framework that works at the intersection of body, mind, and soul to create lasting, measurable change. It's not one tool. It's a complete rewiring.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CREDENTIALS -->
+<section class="creds-section">
+  <div class="creds-header">
+    <div class="wf-label">Sekcija 4 — Kredencijali</div>
+    <p class="eyebrow eyebrow-center">By the numbers</p>
+    <h2 class="section-h" style="font-size: clamp(2rem, 3vw, 2.75rem);">The foundation behind<br><em>the work</em></h2>
+  </div>
+
+  <div class="creds-numbers">
+    <div class="cred-stat">
+      <div class="cred-number">16+</div>
+      <p class="cred-label">Years working with women in transformation</p>
+    </div>
+    <div class="cred-stat">
+      <div class="cred-number">100s</div>
+      <p class="cred-label">Of leaders, entrepreneurs, and women guided</p>
+    </div>
+    <div class="cred-stat">
+      <div class="cred-number">4</div>
+      <p class="cred-label">Core pillars integrated into one cohesive framework</p>
+    </div>
+    <div class="cred-stat">
+      <div class="cred-number">1</div>
+      <p class="cred-label">Proprietary methodology: Nervous System Energetics™</p>
+    </div>
+  </div>
+
+  <div class="certs-grid">
+    <div class="cert-item">
+      <div class="cert-dot"></div>
+      <div>
+        <p class="cert-text">Transformational Breathwork Facilitator</p>
+        <p class="cert-note">[ Marina dodaje specifičnu školu/sertifikat ]</p>
+      </div>
+    </div>
+    <div class="cert-item">
+      <div class="cert-dot"></div>
+      <div>
+        <p class="cert-text">Holistic Nutrition & Lifestyle Coach</p>
+        <p class="cert-note">[ Marina dodaje specifičnu školu/sertifikat ]</p>
+      </div>
+    </div>
+    <div class="cert-item">
+      <div class="cert-dot"></div>
+      <div>
+        <p class="cert-text">Somatic Movement Practitioner</p>
+        <p class="cert-note">[ Marina dodaje specifičnu školu/sertifikat ]</p>
+      </div>
+    </div>
+    <div class="cert-item">
+      <div class="cert-dot"></div>
+      <div>
+        <p class="cert-text">Biohacking & Nervous System Specialist</p>
+        <p class="cert-note">[ Marina dodaje specifičnu školu/sertifikat ]</p>
+      </div>
+    </div>
+    <div class="cert-item">
+      <div class="cert-dot"></div>
+      <div>
+        <p class="cert-text">Trauma-Informed Coaching</p>
+        <p class="cert-note">[ Marina dodaje specifičnu školu/sertifikat ]</p>
+      </div>
+    </div>
+    <div class="cert-item">
+      <div class="cert-dot"></div>
+      <div>
+        <p class="cert-text">Life & Leadership Coach</p>
+        <p class="cert-note">[ Marina dodaje specifičnu školu/sertifikat ]</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="values-section">
+  <div class="max-w">
+    <div class="values-header">
+      <div class="wf-label wf-label-light">Sekcija 5 — Vrednosti</div>
+      <p class="eyebrow eyebrow-center" style="color: var(--gold-light); justify-content: center;">What I believe</p>
+      <h2 class="section-h section-h-light" style="font-size: clamp(2rem, 3vw, 2.75rem); margin: 0.5rem auto 0; max-width: 480px;">The principles that<br>guide <em>everything.</em></h2>
+    </div>
+
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-num">01</div>
+        <p class="value-title">The body is the doorway</p>
+        <p class="value-body">Real transformation doesn't happen through the mind alone. The body holds the truth — and the body is where lasting change begins. Not as a project to be managed, but as a home to be inhabited.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-num">02</div>
+        <p class="value-title">Science and soul belong together</p>
+        <p class="value-body">Neuroscience and spirituality are not opposites. The deepest healing happens at the intersection of both — where measurable shifts in the nervous system meet the mystery of who you actually are.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-num">03</div>
+        <p class="value-title">You are not broken</p>
+        <p class="value-body">Every woman I work with comes in whole. My role isn't to fix — it's to help you remember what you've always carried. The capacity for vitality, clarity, and genuine peace is already in you.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-num">04</div>
+        <p class="value-title">Leading well starts with living well</p>
+        <p class="value-body">The women who change the world do it from a regulated nervous system, a vital body, and an open heart. Not from burnout. Not from performance. From genuine, embodied wholeness.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<div style="background: var(--cream); padding: 0 4rem;">
+  <section class="about-cta-section">
+    <div class="cta-text-block">
+      <div class="wf-label">Sekcija 6 — CTA</div>
+      <h2 class="cta-big-title">Ready to find out<br>if we're a <em>good fit?</em></h2>
+      <p class="cta-body">Book a free Clarity Call. No pressure, no pitch — just an honest conversation about where you are, where you want to be, and whether I'm the right person to guide you there.</p>
+      <a href="#" class="btn-primary">Book a Clarity Call</a>
+    </div>
+
+    <div class="cta-visual">
+      <div class="clarity-call-box">
+        <p class="cc-label">Free 45-minute call</p>
+        <h3 class="cc-title">The Clarity <em>Call</em></h3>
+        <ul class="cc-list">
+          <li><span class="cc-check">✓</span>We talk honestly about where you are right now</li>
+          <li><span class="cc-check">✓</span>I listen — really listen — before offering anything</li>
+          <li><span class="cc-check">✓</span>We explore which path (if any) makes sense for you</li>
+          <li><span class="cc-check">✓</span>You leave with clarity, regardless of what you decide</li>
+        </ul>
+        <a href="#" class="btn-primary-light">Book your free call →</a>
+        <p class="cc-disclaimer">No sales pressure. Just an honest conversation.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top max-w">
+    <div>
+      <p class="footer-logo">Thrive <span>with Marina</span></p>
+      <p class="footer-tagline">Helping visionary women lead from a regulated nervous system — and a thriving body.</p>
+      <p class="footer-tree">🌱 A tree is planted for every client.</p>
+    </div>
+    <div>
+      <p class="footer-col-title">Work with me</p>
+      <ul class="footer-links">
+        <li><a href="#">Soul-Led Body Coaching</a></li>
+        <li><a href="#">HeartLead Mentoring</a></li>
+        <li><a href="#">Free Breathwork</a></li>
+        <li><a href="#">Book a Clarity Call</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-col-title">Explore</p>
+      <ul class="footer-links">
+        <li><a href="#">About Marina</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Testimonials</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-col-title">Connect</p>
+      <ul class="footer-links">
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">LinkedIn</a></li>
+        <li><a href="#">The Embodied Letters</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom max-w">
+    <p>© Thrive with Marina 2026</p>
+    <div class="social-links">
+      <a href="#">Instagram</a>
+      <a href="#">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

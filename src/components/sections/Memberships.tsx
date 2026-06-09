@@ -65,7 +65,7 @@ function PlanCard({ plan }: { plan: MembershipPlan }) {
           variant={isVip ? "primary" : "dark"}
           className="w-full"
         >
-          Buy a subscription
+          Explore this path
         </Button>
       </div>
     </article>
@@ -136,12 +136,11 @@ export function Memberships() {
             ref={titleRef}
             className={`${plansTitleClass} mx-auto text-pudra-500`}
           >
-            Pricing <span className="italic">plans</span> for your yoga{" "}
-            <span className="italic">wellness journey</span>
+            Two ways to work <span className="italic">with me</span>
           </h2>
         </header>
 
-        <div className="flex flex-col gap-5 lg:grid lg:grid-cols-3 lg:items-stretch lg:gap-5">
+        <div className="flex flex-col gap-5 lg:grid lg:grid-cols-2 lg:items-stretch lg:gap-5">
           {membershipPlans.map((plan) => (
             <PlanCard key={plan.id} plan={plan} />
           ))}

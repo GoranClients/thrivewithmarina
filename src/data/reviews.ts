@@ -4,93 +4,80 @@ export type TextReview = {
   title: string;
   body: string;
   author: string;
-  age: number;
 };
 
 export type VideoReview = {
   id: string;
   kind: "video";
   name: string;
-  age: number;
   poster: string;
-  mp4?: string;
-  vimeoId?: string;
+  mp4: string;
 };
 
 export type Review = TextReview | VideoReview;
 
 export const reviews: Review[] = [
   {
-    id: "review-0",
+    id: "review-kie-kono",
     kind: "text",
-    title: "The yoga studio is a source of harmony and positive emotions!",
-    body: '"The ThriveWithMarina yoga studio is a source of harmony and positive emotions! I\'ve been attending classes for a year and a half now, and the results are astonishing. The instructors are fantastic at what they do and always help find the right level of challenge. I\'ve found not only physical activity but also friends among like-minded individuals. Thanks to the instructors, I\'ve become more flexible and calm."',
-    author: "John Smith",
-    age: 26,
+    title: "Marina is the best coach you can ever have.",
+    body: "We all need to do some exercise to live healthy and we all know it but it's not easy to do it because we are too busy with work, being a mom, etc… I used to be the one who loves any kind of exercise but for me it's such a hustle to move out of the couch or wake up early in the morning to go to a gym. Marina is not just ordinally personal trainer, she will be committed to your goal 120%. She can guide you with healthy meal plans, moreover, not just physical trainingadvice but advice for your heart and mind as well. If you are ready to take the first step to achieve how you want to grow, not just physically but as a person, Marina is the best coach you can ever have like how she has been to me. I can guarantee every cent and minute you will spend with her, will be your lifetime treasure.",
+    author: "Kie Kono",
   },
   {
-    id: "review-1",
+    id: "review-natasha-rockstrom",
     kind: "video",
-    name: "Emily Johnson",
-    age: 23,
-    poster: "/assets/reviews/emily.webp",
-    vimeoId: "559580269",
+    name: "Natasha Rockstrom",
+    poster: "/assets/reviews/natasha-poster.jpg",
+    mp4: "/assets/reviews/natasha.mp4",
   },
   {
-    id: "review-2",
+    id: "review-plamena-petrova",
     kind: "text",
-    title: "I've been practicing yoga here for years",
-    body: "I've been practicing yoga here for years, and I'm continuously amazed by the positive impact it has on my physical and mental well-being. The community here is supportive and inspiring",
-    author: "William Davis",
-    age: 19,
+    title: "Like spending an hour with a friend.",
+    body: "I met Marina back in 2015 when I signed in a professional gym for the first time. I had no idea from where to start, how to train, what to eat. Marina helped me ease my way in to working out and eating a balanced diet. She is so enthusiastic, motivating, and knowledgeable about all things fitness. Marina pushed me slowly to do more and more and to push myself to new limits. It was so much more enjoyable than I had ever imagined. It was like spending an hour with a friend, we chat and laugh and the whole time get a great work out. I can say we built the foundation of Strength and Power. She is very creative in progressing sessions, making them fun and challenging at the same time. There are many personal trainers \"out there\", but few personal trainers who have as vast an amount of specialized & diverse training, knowledge, experience sensitivity & dedication to her clients as My Marina.",
+    author: "Plamena Petrova",
   },
   {
-    id: "review-3",
+    id: "review-houri-elmayan",
     kind: "text",
-    title: "I've found my sanctuary at this yoga studio.",
-    body: "I've found my sanctuary at this yoga studio. The instructors are incredibly knowledgeable and create a welcoming atmosphere that makes each class a rejuvenating experience.",
-    author: "Sophia Brown",
-    age: 20,
+    title: "She helped me overcome my fears.",
+    body: "I had the pleasure of training with Marina Savic for about a year and was very surprised at the change my body went through with her guidance and teachings. For all of my life I avoided the gym and was afraid to workout with personal trainers but she helped me overcome my fears and got me motivated to work out with her as often as possible. I benefited greatly with her custom-made workout routines which were always fun, new, never repetitive, and achievable. But she also challenged me out of my comfort zone to try new things. Within that period, I saw how my posture changed, my back aches reduced drastically while my mood uplifted. I would still continue to work out with Marina if I didn't have to travel. In fact, the only thing I wanted to bring to the new country was her. Her presence is very entertaining and she makes the workout time fly by with her humor and beautiful energy.",
+    author: "Houri Elmayan",
   },
   {
-    id: "review-4",
-    kind: "text",
-    title: "This yoga studio is a hidden gem!",
-    body: '"This yoga studio is a hidden gem! The variety of classes suits all levels, and the peaceful ambiance instantly puts you in a zen state of mind. The instructors are fantastic at what they do and always help find the right level of challenge. I\'ve found not only physical activity but also friends among like-minded individuals. Thanks to the instructors, I\'ve become more flexible and calm."',
-    author: "Daniel Wilson",
-    age: 31,
-  },
-  {
-    id: "review-5",
+    id: "review-rajvi-rahemtulla",
     kind: "video",
-    name: "Olivia Martinez",
-    age: 27,
-    poster: "/assets/reviews/olivia.webp",
-    vimeoId: "424982514",
+    name: "Rajvi Rahemtulla",
+    poster: "/assets/reviews/rajvi-poster.jpg",
+    mp4: "/assets/reviews/rajvi.mp4",
   },
   {
-    id: "review-6",
+    id: "review-serge-massaad",
+    kind: "text",
+    title: "Mental wellbeing comes before physical wellbeing.",
+    body: "There are many personal trainers in Dubai, but few personal trainers who have as vast an amount of specialized & diverse training, knowledge, experience sensitivity & dedication to her clients as Marina. Recommended by a friend, I decided to train with her on a short trip to Dubai. Little did I know that the bond will be strong since she works first on the mental well being of her clients before the physical well being. This is the art!",
+    author: "Serge J. Massaad",
+  },
+  {
+    id: "review-aren-khachadourian",
     kind: "video",
-    name: "James Anderson",
-    age: 24,
-    poster: "/assets/reviews/james-poster.jpg",
-    mp4: "/assets/reviews/james.mp4",
-    vimeoId: "416320503",
+    name: "Aren Der Khachadourian",
+    poster: "/assets/reviews/aren-poster.jpg",
+    mp4: "/assets/reviews/aren.mp4",
   },
   {
-    id: "review-7",
+    id: "review-saad-siddiqui",
     kind: "text",
-    title: "The yoga studio offers a perfect blend.",
-    body: "The yoga studio offers a perfect blend of traditional and modern yoga practices. The serene setting and expert guidance make it an ideal place to escape the daily hustle and find inner balance.",
-    author: "Emma Taylor",
-    age: 22,
+    title: "One of the most caring professionals around.",
+    body: "I've trained with Marina for almost 2 years and can easily say she is one of the most experienced, talented, committed and most importantly caring professionals around. She helped me to achieve my goals, developed my interest in self care and helped me to understand different perspectives of life. My fitness both physical and mental has definitely improved under her guidance and the best part is she helped me develop this into a habit. I would definitely recommend Marina.",
+    author: "Saad Siddiqui",
   },
   {
-    id: "review-8",
+    id: "review-reanna-mulholand",
     kind: "text",
-    title: "Attending classes at this yoga studio has truly transformed my life.",
-    body: "Attending classes at this yoga studio has truly transformed my life. The skilled instructors encourage personal growth, and I leave each session feeling stronger, both physically and mentally. I cannot express how grateful I am for this yoga studio. The instructors' dedication to their craft is evident in every class, and the sense of harmony and mindfulness they cultivate is truly exceptional",
-    author: "Benjamin Walker",
-    age: 34,
+    title: "The best shape of my life — and a mentor and friend.",
+    body: "I was fortunate enough to have Marina come into my life at a time I needed it most! Not only did she get me in the best shape of my life, she also became a mentor and friend over the years. Her knowledge of fitness, health and well-being always made me confident I was in very capable hands and her positivity became something I craved each session! I highly recommend any journey you choose to take with Marina!",
+    author: "Reanna Mulholand",
   },
 ];

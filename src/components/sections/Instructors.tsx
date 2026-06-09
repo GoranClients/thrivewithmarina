@@ -86,22 +86,27 @@ export function Instructors() {
               data-instructors-reveal
               className="heading-medium text-pudra-500"
             >
-              <span className="italic">Expert </span>
-              instructors
+              <span className="block">
+                You can&apos;t think your way into a thriving body.
+              </span>
+              <span className="block">
+                You have to <span className="italic">feel your way back.</span>
+              </span>
             </h2>
 
             <p
               data-instructors-reveal
               className="max-w-md text-base leading-[1.5] tracking-[-0.02em] text-pudra-500 lg:text-lg"
             >
-              Each instructor is certified in their respective yoga discipline
-              and is dedicated to guiding you on your journey with personalized
-              attention.
+              I spent 16 years studying the body — through movement, breath,
+              trauma healing, biohacking, and nervous system science. I work with
+              women who are done performing wellness and ready to actually live
+              it — in their cells, their relationships, and the way they lead.
             </p>
 
             <div data-instructors-reveal className="mt-2 w-full max-w-sm lg:mt-4">
               <Button href="#" variant="green" className="w-full lg:w-auto">
-                Buy a subscription
+                Learn my full story
               </Button>
             </div>
           </div>
@@ -115,8 +120,8 @@ export function Instructors() {
               className="relative aspect-[1/1.36] w-full max-w-[290px] overflow-hidden rounded-[500px] lg:max-w-[540px]"
             >
               <Image
-                src="/assets/instructors/instructor.webp"
-                alt="Yoga instructor"
+                src="/assets/instructors/marina.png"
+                alt="Marina Savic"
                 fill
                 sizes="(max-width: 1023px) 87vw, 540px"
                 className="object-cover object-center"

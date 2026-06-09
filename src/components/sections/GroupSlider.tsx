@@ -141,8 +141,7 @@ export function GroupSlider() {
             ref={titleRef}
             className={`${journeyTitleClass} mx-auto text-pudra-500`}
           >
-            A visual <span className="italic">journey</span> of mind and body
-            harmony
+            Experience the <span className="italic">method</span> in practice
           </h2>
         </header>
       </div>
@@ -163,6 +162,14 @@ export function GroupSlider() {
                     sizes="(max-width: 1023px) 94vw, 1264px"
                     className="object-cover"
                   />
+                </div>
+                <div className="mx-auto mt-8 max-w-2xl px-6 text-center">
+                  <h3 className="font-display text-[clamp(1.75rem,4vw,2.25rem)] leading-none tracking-[-0.04em] text-pudra-500">
+                    {slide.title}
+                  </h3>
+                  <p className="mt-4 text-base leading-[1.5] tracking-[-0.02em] text-gray-200">
+                    {slide.description}
+                  </p>
                 </div>
               </div>
             ))}

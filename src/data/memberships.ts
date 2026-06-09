@@ -8,36 +8,27 @@ export type MembershipPlan = {
 
 export const membershipPlans: MembershipPlan[] = [
   {
-    id: "basic",
-    name: "Basic membership",
-    price: "$125/month",
+    id: "soul-led",
+    name: "Soul-Led Body Coaching",
+    price: "Transform your body. Elevate your vitality.",
     features: [
-      "Unlimited access to yoga classes for one month",
-      "Participation in group classes of various yoga styles",
-      "Access to equipment and recreational areas at the studio",
+      "For the woman whose body is the bottleneck.",
+      "A 1:1 holistic coaching journey combining biohacking, somatic movement, nutrition, and mindset work — tailored to your biology and your life.",
+      "→ A body that supports your vision, not drains it.",
+      "1:1 Coaching · Biohacking · Nutrition · Somatic Movement",
     ],
     variant: "default",
   },
   {
-    id: "vip",
-    name: "Vip membership",
-    price: "$150/month",
+    id: "heartlead",
+    name: "HeartLead Mentoring",
+    price: "Rewire your nervous system. Lead from the inside out.",
     features: [
-      'All the benefits of the "Basic Membership"',
-      "Personalized individual sessions with an experienced instructor",
-      "Priority booking for high-demand classes",
+      "For the woman whose nervous system is the bottleneck.",
+      "A 6 or 12-week 1:1 mentorship built on breathwork, somatic practices, and nervous system rewiring — to shift how you lead, relate, and create.",
+      "→ Leadership that comes from coherence, not control.",
+      "6 or 12 Weeks · Breathwork · 1:1 Mentoring · Nervous System",
     ],
     variant: "vip",
-  },
-  {
-    id: "online",
-    name: "Online membership",
-    price: "$225/month",
-    features: [
-      "Access to an online platform for yoga classes from anywhere in the world",
-      "Daily live streams with professional instructors",
-      "The ability to view recordings of previous classes at your convenience",
-    ],
-    variant: "default",
   },
 ];

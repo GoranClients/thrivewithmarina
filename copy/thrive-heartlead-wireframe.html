@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HeartLead Mentoring — Thrive with Marina</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --cream: #F7F3EE; --cream-dark: #EDE8E0; --sand: #D9CFC2;
+    --gold: #B89A6A; --gold-light: #D4B88A; --gold-dark: #8A6E48;
+    --deep: #1E1C2E; --deep-mid: #2D2B40; --deep-light: #3D3B52;
+    --charcoal: #2C2720; --charcoal-mid: #4A4238; --warm-gray: #7A7068;
+    --white: #FDFAF7; --lavender: #E8E5F0;
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font-body); background: var(--cream); color: var(--charcoal); font-size: 16px; line-height: 1.7; overflow-x: hidden; }
+
+  .wf-label { display: inline-block; font-family: var(--font-body); font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-dark); background: var(--cream-dark); border: 1px dashed var(--sand); padding: 3px 10px; border-radius: 100px; margin-bottom: 1rem; }
+  .wf-label-light { color: var(--gold-light); background: rgba(184,154,106,0.08); border-color: rgba(184,154,106,0.25); }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 4rem; height: 72px; background: rgba(247,243,238,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--sand); }
+  .nav-logo { font-family: var(--font-display); font-size: 1.4rem; font-weight: 500; color: var(--charcoal); text-decoration: none; }
+  .nav-logo span { color: var(--gold); }
+  .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+  .nav-links a { font-size: 0.82rem; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; color: var(--charcoal-mid); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+  .nav-cta { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white); background: var(--charcoal); padding: 0.65rem 1.5rem; border-radius: 2px; text-decoration: none; transition: background 0.2s; }
+  .nav-cta:hover { background: var(--gold-dark); }
+
+  .max-w { max-width: 1200px; margin: 0 auto; }
+  .eyebrow { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem; }
+  .eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); display: block; }
+  .eyebrow-center { justify-content: center; }
+  .eyebrow-center::before { display: none; }
+  .section-h { font-family: var(--font-display); font-size: clamp(2rem, 3.5vw, 3.2rem); font-weight: 300; line-height: 1.15; letter-spacing: -0.01em; color: var(--charcoal); }
+  .section-h em { font-style: italic; color: var(--gold-dark); }
+  .section-h-light { color: var(--white); }
+  .section-h-light em { color: var(--gold-light); }
+  .btn-primary { font-family: var(--font-body); font-size: 0.8rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--white); background: var(--charcoal); padding: 1rem 2.25rem; border-radius: 2px; text-decoration: none; display: inline-block; transition: background 0.25s, transform 0.2s; }
+  .btn-primary:hover { background: var(--gold-dark); transform: translateY(-1px); }
+  .btn-primary-light { font-family: var(--font-body); font-size: 0.8rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--charcoal); background: var(--gold-light); padding: 1rem 2.25rem; border-radius: 2px; text-decoration: none; display: inline-block; transition: background 0.25s, transform 0.2s; }
+  .btn-primary-light:hover { background: var(--gold); transform: translateY(-1px); }
+  .text-link { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-dark); text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; transition: gap 0.2s; }
+  .text-link::after { content: '→'; }
+  .text-link:hover { gap: 0.9rem; }
+
+  /* HERO — dark/deep for HeartLead (diferentira se od Soul-Led) */
+  .hl-hero {
+    padding-top: 72px; min-height: 100vh;
+    background: var(--deep);
+    display: grid; grid-template-columns: 1fr 1fr;
+    position: relative; overflow: hidden;
+  }
+
+  .hl-hero::before {
+    content: '';
+    position: absolute;
+    top: 30%; right: -100px;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(184,154,106,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hl-hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 7rem 4rem 6rem; position: relative; z-index: 2;
+  }
+
+  .hl-service-type { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.75rem; }
+  .hl-service-type::before { content: ''; width: 32px; height: 1px; background: var(--gold-light); }
+
+  .hl-hero-h1 { font-family: var(--font-display); font-size: clamp(2.75rem, 4.5vw, 4.25rem); font-weight: 300; line-height: 1.1; color: var(--white); margin-bottom: 0.5rem; }
+  .hl-hero-h1 em { font-style: italic; color: var(--gold-light); }
+
+  .hl-hero-tagline { font-family: var(--font-display); font-size: 1.25rem; font-style: italic; font-weight: 300; color: rgba(253,250,247,0.55); margin-bottom: 1.75rem; line-height: 1.4; }
+
+  .hl-hero-body { font-size: 0.97rem; font-weight: 300; color: rgba(253,250,247,0.7); line-height: 1.85; max-width: 460px; margin-bottom: 2.5rem; }
+
+  .hl-hero-right { position: relative; overflow: hidden; }
+  .hl-hero-img { width: 100%; height: 100%; background: linear-gradient(160deg, var(--deep-mid) 0%, var(--deep-light) 50%, #4a3d5a 100%); display: flex; align-items: flex-end; padding: 3rem; }
+  .img-label { font-family: var(--font-display); font-size: 0.85rem; font-style: italic; color: rgba(212,184,138,0.5); }
+
+  .hero-ctas { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; }
+  .btn-ghost-light { font-size: 0.8rem; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(253,250,247,0.55); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; transition: color 0.2s; }
+  .btn-ghost-light:hover { color: var(--gold-light); }
+  .btn-ghost-light::after { content: '↓'; font-size: 1rem; }
+
+  /* PROBLEM */
+  .hl-problem { padding: 8rem 4rem; background: var(--cream); }
+  .hl-problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; max-width: 1100px; margin: 0 auto; }
+  .hl-problem-list { display: flex; flex-direction: column; gap: 1.5px; margin-top: 2.5rem; }
+  .hl-problem-item { padding: 1.5rem 1.75rem; background: var(--white); display: flex; align-items: flex-start; gap: 1.25rem; transition: transform 0.2s; }
+  .hl-problem-item:hover { transform: translateX(4px); }
+  .hl-p-num { font-family: var(--font-display); font-size: 1.5rem; font-weight: 300; color: var(--gold-light); flex-shrink: 0; line-height: 1.2; width: 28px; }
+  .hl-p-text { font-size: 0.9rem; font-weight: 300; color: var(--charcoal-mid); line-height: 1.65; font-style: italic; }
+  .hl-problem-visual { background: var(--deep); padding: 3.5rem; position: relative; overflow: hidden; }
+  .hl-problem-visual::before { content: ''; position: absolute; bottom: -40px; right: -40px; width: 200px; height: 200px; border-radius: 50%; border: 1px solid rgba(184,154,106,0.1); }
+  .hl-pv-title { font-family: var(--font-display); font-size: 1.4rem; font-weight: 300; color: var(--white); margin-bottom: 0.5rem; position: relative; z-index: 1; }
+  .hl-pv-sub { font-size: 0.82rem; color: rgba(253,250,247,0.4); margin-bottom: 2rem; position: relative; z-index: 1; }
+  .hl-pv-closer { font-family: var(--font-display); font-size: 1.15rem; font-style: italic; font-weight: 300; color: var(--gold-light); line-height: 1.55; position: relative; z-index: 1; padding-left: 1.25rem; border-left: 2px solid var(--gold); }
+
+  /* SCIENCE / BREATHWORK */
+  .hl-science { padding: 8rem 4rem; background: var(--deep); position: relative; overflow: hidden; }
+  .hl-science::before { content: ''; position: absolute; top: -1px; left: 0; right: 0; height: 60px; background: var(--cream); clip-path: ellipse(55% 100% at 50% 0%); }
+  .hl-science-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; max-width: 1100px; margin: 0 auto; }
+  .hl-science-body { font-size: 0.95rem; font-weight: 300; color: rgba(253,250,247,0.65); line-height: 1.85; margin-bottom: 1.25rem; }
+  .hl-science-body strong { color: var(--gold-light); font-weight: 500; }
+  .hl-stats { display: flex; flex-direction: column; gap: 2px; }
+  .hl-stat { background: rgba(255,255,255,0.04); padding: 1.75rem 2rem; border-left: 3px solid var(--gold); }
+  .hl-stat-num { font-family: var(--font-display); font-size: 3rem; font-weight: 300; color: var(--gold-light); line-height: 1; margin-bottom: 0.4rem; }
+  .hl-stat-text { font-size: 0.82rem; color: rgba(253,250,247,0.5); line-height: 1.55; }
+
+  /* FORMAT */
+  .hl-format { padding: 8rem 4rem; background: var(--cream-dark); }
+  .hl-format-header { text-align: center; margin-bottom: 5rem; }
+  .hl-format-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; max-width: 900px; margin: 0 auto 4rem; }
+  .format-card { background: var(--white); padding: 3.5rem 3rem; position: relative; transition: transform 0.3s; }
+  .format-card:hover { transform: translateY(-4px); }
+  .format-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--gold), var(--gold-light)); transform: scaleX(0); transform-origin: left; transition: transform 0.35s; }
+  .format-card:hover::after { transform: scaleX(1); }
+  .fc-weeks { font-family: var(--font-display); font-size: 4.5rem; font-weight: 300; color: var(--gold-light); line-height: 1; margin-bottom: 0.5rem; }
+  .fc-title { font-family: var(--font-display); font-size: 1.35rem; font-weight: 500; color: var(--charcoal); margin-bottom: 0.75rem; }
+  .fc-body { font-size: 0.88rem; font-weight: 300; color: var(--charcoal-mid); line-height: 1.75; margin-bottom: 1.75rem; }
+  .fc-tag { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 12px; border-radius: 100px; border: 1px solid var(--sand); color: var(--warm-gray); }
+  .includes-block { background: var(--charcoal); padding: 3rem 3.5rem; max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+  .include-item { display: flex; align-items: flex-start; gap: 0.75rem; }
+  .inc-check { width: 18px; height: 18px; border-radius: 50%; border: 1px solid var(--gold); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; font-size: 9px; color: var(--gold-light); }
+  .inc-text { font-size: 0.86rem; color: rgba(253,250,247,0.7); line-height: 1.5; }
+  .includes-label { grid-column: 1 / -1; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 0.5rem; }
+
+  /* FOR WHO */
+  .hl-for { padding: 8rem 4rem; background: var(--cream); }
+  .hl-for-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; max-width: 1100px; margin: 0 auto; }
+  .hl-for-list { display: flex; flex-direction: column; gap: 1.5px; margin-top: 2.5rem; }
+  .hl-for-item { background: var(--white); padding: 1.5rem 1.75rem; display: flex; align-items: flex-start; gap: 1.25rem; transition: transform 0.2s; }
+  .hl-for-item:hover { transform: translateX(4px); }
+  .hl-for-check { width: 20px; height: 20px; border-radius: 50%; border: 1px solid var(--gold); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; font-size: 10px; color: var(--gold); }
+  .hl-for-text { font-size: 0.9rem; font-weight: 300; color: var(--charcoal-mid); line-height: 1.65; }
+
+  /* FAQ */
+  .faq-section { padding: 8rem 4rem; background: var(--white); }
+  .faq-header { text-align: center; margin-bottom: 4.5rem; }
+  .faq-list { max-width: 760px; margin: 0 auto; }
+  .faq-item { border-top: 1px solid var(--sand); }
+  .faq-item:last-child { border-bottom: 1px solid var(--sand); }
+  .faq-q { font-family: var(--font-display); font-size: 1.1rem; font-weight: 500; color: var(--charcoal); padding: 1.5rem 0; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 1rem; line-height: 1.4; }
+  .faq-arrow { font-size: 1rem; color: var(--gold); flex-shrink: 0; transition: transform 0.3s; }
+  .faq-a { font-size: 0.9rem; font-weight: 300; color: var(--charcoal-mid); line-height: 1.8; padding-bottom: 1.5rem; display: none; }
+  .faq-item.open .faq-a { display: block; }
+  .faq-item.open .faq-arrow { transform: rotate(180deg); }
+
+  /* TESTIMONIALS */
+  .hl-testimonials { padding: 8rem 4rem; background: var(--deep); position: relative; overflow: hidden; }
+  .hl-testimonials::before { content: ''; position: absolute; top: -1px; left: 0; right: 0; height: 60px; background: var(--white); clip-path: ellipse(55% 100% at 50% 0%); }
+  .hl-t-header { text-align: center; margin-bottom: 4.5rem; }
+  .hl-t-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; max-width: 900px; margin: 0 auto 3.5rem; }
+  .hl-t-card { background: rgba(255,255,255,0.04); padding: 2.5rem 2.25rem; }
+  .hl-t-qmark { font-family: var(--font-display); font-size: 4rem; line-height: 0.6; color: rgba(212,184,138,0.3); margin-bottom: 1rem; font-weight: 300; }
+  .hl-t-text { font-family: var(--font-display); font-size: 1.05rem; font-style: italic; font-weight: 300; color: rgba(253,250,247,0.8); line-height: 1.65; margin-bottom: 1.5rem; }
+  .hl-t-name { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-light); }
+  .hl-t-role { font-size: 0.75rem; color: rgba(253,250,247,0.35); margin-top: 0.2rem; }
+
+  /* FINAL CTA */
+  .hl-final-cta { background: var(--cream); padding: 9rem 4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; max-width: 1100px; margin: 0 auto; }
+  .hl-cta-h { font-family: var(--font-display); font-size: clamp(2.5rem, 4vw, 3.75rem); font-weight: 300; line-height: 1.1; color: var(--charcoal); margin-bottom: 1.5rem; }
+  .hl-cta-h em { font-style: italic; color: var(--gold-dark); }
+  .hl-cta-body { font-size: 0.95rem; font-weight: 300; color: var(--charcoal-mid); line-height: 1.85; margin-bottom: 2.5rem; }
+  .hl-cta-visual { background: var(--deep); padding: 3.5rem; position: relative; overflow: hidden; }
+  .hl-cta-visual::before { content: ''; position: absolute; bottom: -40px; right: -40px; width: 200px; height: 200px; border-radius: 50%; border: 1px solid rgba(184,154,106,0.1); }
+  .cc-inner { position: relative; z-index: 1; }
+  .cc-sublabel { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 0.75rem; }
+  .cc-h { font-family: var(--font-display); font-size: 1.75rem; font-weight: 300; color: var(--white); line-height: 1.3; margin-bottom: 1.5rem; }
+  .cc-h em { font-style: italic; color: var(--gold-light); }
+  .cc-list { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; margin-bottom: 2rem; }
+  .cc-list li { font-size: 0.87rem; color: rgba(253,250,247,0.7); display: flex; align-items: flex-start; gap: 0.75rem; line-height: 1.5; }
+  .cc-check { width: 16px; height: 16px; border-radius: 50%; border: 1px solid var(--gold); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; font-size: 9px; color: var(--gold-light); }
+  .cc-disc { font-size: 0.75rem; color: rgba(253,250,247,0.3); margin-top: 1rem; }
+
+  footer { background: var(--deep); padding: 3rem 4rem; border-top: 1px solid rgba(255,255,255,0.06); }
+  .footer-bottom { display: flex; align-items: center; justify-content: space-between; font-size: 0.75rem; color: rgba(253,250,247,0.3); max-width: 1200px; margin: 0 auto; }
+  .footer-links-row { display: flex; gap: 2rem; }
+  .footer-links-row a { font-size: 0.75rem; color: rgba(253,250,247,0.4); text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
+  .footer-links-row a:hover { color: var(--gold-light); }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  .fade-up { opacity: 0; animation: fadeUp 0.7s ease forwards; }
+  .fade-up:nth-child(1) { animation-delay: 0.1s; }
+  .fade-up:nth-child(2) { animation-delay: 0.25s; }
+  .fade-up:nth-child(3) { animation-delay: 0.4s; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Thrive <span>with Marina</span></a>
+  <ul class="nav-links">
+    <li><a href="#">About</a></li>
+    <li><a href="#">Soul-Led Body Coaching</a></li>
+    <li><a href="#" class="active">HeartLead Mentoring</a></li>
+    <li><a href="#">Blog</a></li>
+    <li><a href="#">Free Breathwork</a></li>
+  </ul>
+  <a href="#" class="nav-cta">Book a Clarity Call</a>
+</nav>
+
+<!-- HERO — tamni ton za razliku od Soul-Led -->
+<section class="hl-hero">
+  <div class="hl-hero-left">
+    <div class="wf-label wf-label-light">Sekcija 1 — Hero</div>
+    <p class="hl-service-type">HeartLead Mentoring</p>
+    <h1 class="hl-hero-h1 fade-up">
+      Rewire your nervous system.<br><em>Lead from the inside out.</em>
+    </h1>
+    <p class="hl-hero-tagline fade-up">A 6 or 12-week journey back to yourself — through breathwork, somatic practices, and nervous system rewiring.</p>
+    <p class="hl-hero-body fade-up">You've been leading from the outside in — doing the work, holding the space, showing up for everyone. But somewhere along the way, you stopped being able to hear yourself. HeartLead is how you come back.</p>
+    <div class="hero-ctas">
+      <a href="#" class="btn-primary-light">Book a Clarity Call</a>
+      <a href="#breathwork" class="btn-ghost-light">Why breathwork</a>
+    </div>
+  </div>
+  <div class="hl-hero-right">
+    <div class="hl-hero-img">
+      <span class="img-label">[ Marina — breathwork/meditative photo ]</span>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="hl-problem">
+  <div class="max-w">
+    <div class="wf-label">Sekcija 2 — Problem Mirror</div>
+    <div class="hl-problem-grid">
+      <div>
+        <p class="eyebrow">Sound familiar?</p>
+        <h2 class="section-h" style="margin-bottom: 1.75rem;">You've built success.<br>But you're <em>running it on fear.</em></h2>
+        <p style="font-size: 0.95rem; font-weight: 300; color: var(--charcoal-mid); line-height: 1.85; margin-bottom: 1.5rem;">Not fear of failure. The quieter kind — the constant low-grade alert, the tight chest before calls, the exhaustion that goes deeper than tired. The feeling of building everything on a foundation that doesn't feel safe.</p>
+        <p style="font-size: 0.95rem; font-weight: 300; color: var(--charcoal-mid); line-height: 1.85;">That's not a mindset problem. That's a nervous system problem. And it has a somatic solution.</p>
+        <div style="margin-top: 2rem;"><a href="#" class="btn-primary">Book a Clarity Call</a></div>
+      </div>
+      <div>
+        <div class="hl-problem-list">
+          <div class="hl-problem-item"><div class="hl-p-num">—</div><p class="hl-p-text">"I've tried therapy, mindset work, everything — but the anxiety keeps coming back."</p></div>
+          <div class="hl-problem-item"><div class="hl-p-num">—</div><p class="hl-p-text">"I react in ways I don't want to. I hate myself for it but I can't seem to stop."</p></div>
+          <div class="hl-problem-item"><div class="hl-p-num">—</div><p class="hl-p-text">"I lead from my head because trusting my body feels unsafe — or I just don't know how."</p></div>
+          <div class="hl-problem-item"><div class="hl-p-num">—</div><p class="hl-p-text">"I'm successful by every external measure. And still I can't feel it. Something is missing."</p></div>
+        </div>
+        <div style="background: var(--deep); padding: 2rem 2.25rem; margin-top: 1.5px;">
+          <p class="hl-pv-title">The missing piece</p>
+          <p class="hl-pv-sub">isn't more strategy, more discipline, or more time</p>
+          <p class="hl-pv-closer">It's a regulated nervous system. And the fastest path there is through the breath.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BREATHWORK SCIENCE -->
+<section class="hl-science" id="breathwork">
+  <div class="max-w">
+    <div class="wf-label wf-label-light">Sekcija 3 — Zašto breathwork (pristupačno)</div>
+    <div class="hl-science-grid">
+      <div>
+        <p class="eyebrow" style="color: var(--gold-light);">The science</p>
+        <h2 class="section-h section-h-light" style="margin-bottom: 2rem;">Why breathwork? Because your breath is the <em>fastest path</em> to your nervous system.</h2>
+        <p class="hl-science-body">Most of us have been breathing in a way that quietly keeps us in stress mode — shallow, rushed, held. We don't notice it because it becomes background noise. But the nervous system notices.</p>
+        <p class="hl-science-body">Research shows that over <strong>80% of communication</strong> between the body and the brain travels upward — from body to mind. This means that changing your breath directly changes your brain state.</p>
+        <p class="hl-science-body">When your breath is regulated, your decisions become clearer. Your relationships deepen. Your creativity returns. You stop leading from fear and start leading from genuine coherence — from the inside out.</p>
+        <div style="margin-top: 2rem;"><a href="#" class="btn-primary-light">Book a Clarity Call</a></div>
+      </div>
+      <div class="hl-stats">
+        <div class="hl-stat">
+          <div class="hl-stat-num">80%</div>
+          <p class="hl-stat-text">of communication between body and brain travels upward — meaning breath directly changes your brain state, not the other way around.</p>
+        </div>
+        <div class="hl-stat">
+          <div class="hl-stat-num">60s</div>
+          <p class="hl-stat-text">The time it takes for a single breath cycle to begin shifting your nervous system out of fight-or-flight and into parasympathetic rest.</p>
+        </div>
+        <div class="hl-stat">
+          <div class="hl-stat-num">∞</div>
+          <p class="hl-stat-text">You've been breathing your whole life. With the right guidance, the same tool that's been running on autopilot becomes your most powerful instrument for change.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMAT -->
+<section class="hl-format">
+  <div class="max-w">
+    <div class="wf-label">Sekcija 4 — Format programa (ovo nedostaje na trenutnom sajtu)</div>
+    <div class="hl-format-header">
+      <p class="eyebrow eyebrow-center">Choose your journey</p>
+      <h2 class="section-h" style="font-size: clamp(2rem, 3vw, 2.75rem); max-width: 500px; margin: 0.5rem auto 0;">Two containers.<br>One <em>transformation.</em></h2>
+    </div>
+
+    <div class="hl-format-grid">
+      <div class="format-card">
+        <div class="fc-weeks">6</div>
+        <p class="fc-title">Week Intensive</p>
+        <p class="fc-body">For the woman who needs a focused, deep reset. Six weeks of 1:1 weekly sessions, personalized breathwork practices, and direct support between sessions to anchor the shift in real time.</p>
+        <span class="fc-tag">Focused reset</span>
+      </div>
+      <div class="format-card">
+        <div class="fc-weeks">12</div>
+        <p class="fc-title">Week Transformation</p>
+        <p class="fc-body">For the woman ready for a complete rewiring. Twelve weeks to go deep — building a regulated nervous system, a new leadership baseline, and a somatic practice that sustains the change long after we finish.</p>
+        <span class="fc-tag">Complete rewiring</span>
+      </div>
+    </div>
+
+    <div class="includes-block">
+      <p class="includes-label">Both programs include</p>
+      <div class="include-item"><div class="inc-check">✓</div><p class="inc-text">Weekly 1:1 sessions via video call</p></div>
+      <div class="include-item"><div class="inc-check">✓</div><p class="inc-text">Personalized breathwork audio recordings</p></div>
+      <div class="include-item"><div class="inc-check">✓</div><p class="inc-text">Somatic practices for daily use</p></div>
+      <div class="include-item"><div class="inc-check">✓</div><p class="inc-text">Direct support between sessions (WhatsApp/voice)</p></div>
+      <div class="include-item"><div class="inc-check">✓</div><p class="inc-text">Custom resources and tools tailored to you</p></div>
+      <div class="include-item"><div class="inc-check">✓</div><p class="inc-text">Access from anywhere in the world — fully online</p></div>
+    </div>
+
+    <div style="text-align: center; margin-top: 3rem;">
+      <p style="font-size: 0.85rem; font-style: italic; color: var(--warm-gray); margin-bottom: 1.5rem;">Not sure which program is right for you? We figure that out together on the Clarity Call.</p>
+      <a href="#" class="btn-primary">Book a Clarity Call</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOR WHO -->
+<section class="hl-for">
+  <div class="max-w">
+    <div class="wf-label">Sekcija 5 — Za koga je HeartLead</div>
+    <div class="hl-for-grid">
+      <div>
+        <p class="eyebrow">This is for you if...</p>
+        <h2 class="section-h" style="font-size: clamp(1.75rem, 2.5vw, 2.5rem); margin-bottom: 2.5rem;">You recognize <em>yourself here.</em></h2>
+        <div class="hl-for-list">
+          <div class="hl-for-item"><div class="hl-for-check">✓</div><p class="hl-for-text">You've built something successful — but you're running it on adrenaline and can't seem to slow down.</p></div>
+          <div class="hl-for-item"><div class="hl-for-check">✓</div><p class="hl-for-text">Your anxiety shows up in your body — tight chest, shallow breath, jaw tension — and you've normalized it.</p></div>
+          <div class="hl-for-item"><div class="hl-for-check">✓</div><p class="hl-for-text">You lead from your head because trusting your body feels unsafe or unfamiliar.</p></div>
+          <div class="hl-for-item"><div class="hl-for-check">✓</div><p class="hl-for-text">You want to break patterns — emotional reactivity, people-pleasing, performing strength — but you don't know how.</p></div>
+          <div class="hl-for-item"><div class="hl-for-check">✓</div><p class="hl-for-text">You're spiritually curious and open to a practice that goes deeper than talk therapy or mindset work alone.</p></div>
+          <div class="hl-for-item"><div class="hl-for-check">✓</div><p class="hl-for-text">You're ready to stop surviving and start leading from a place of genuine wholeness.</p></div>
+        </div>
+      </div>
+      <div>
+        <div class="wf-label">Razlika od Soul-Led Body Coaching</div>
+        <div style="background: var(--white); padding: 2.5rem; border-top: 3px solid var(--gold);">
+          <p style="font-size: 0.7rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.25rem;">HeartLead vs Soul-Led</p>
+          <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+            <div>
+              <p style="font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--charcoal-mid); margin-bottom: 0.4rem;">HeartLead Mentoring</p>
+              <p style="font-size: 0.88rem; font-weight: 300; color: var(--warm-gray); line-height: 1.6;">Nervous system as the primary focus. Breathwork, somatic rewiring, emotional patterns, leadership from coherence.</p>
+            </div>
+            <div style="height: 1px; background: var(--sand);"></div>
+            <div>
+              <p style="font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--charcoal-mid); margin-bottom: 0.4rem;">Soul-Led Body Coaching</p>
+              <p style="font-size: 0.88rem; font-weight: 300; color: var(--warm-gray); line-height: 1.6;">Physical body as the primary focus. Energy, hormones, weight, sleep, nutrition, physical vitality.</p>
+            </div>
+            <div style="height: 1px; background: var(--sand);"></div>
+            <div>
+              <p style="font-size: 0.88rem; font-weight: 300; font-style: italic; color: var(--charcoal-mid); line-height: 1.6;">Not sure which is right for you? Book a Clarity Call — we'll figure it out together.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="faq-header">
+    <div class="wf-label">Sekcija 6 — FAQ</div>
+    <p class="eyebrow eyebrow-center">Common questions</p>
+    <h2 class="section-h" style="font-size: clamp(2rem, 3vw, 2.75rem); max-width: 480px; margin: 0.5rem auto 0;">Everything you need<br>to <em>know</em></h2>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item open">
+      <p class="faq-q">I've never done breathwork before. Is this right for me? <span class="faq-arrow">↑</span></p>
+      <p class="faq-a">Absolutely. Most of my clients come to HeartLead without any breathwork experience. We start exactly where you are and build at your pace. The practice is designed to be safe, accessible, and deeply effective regardless of your background.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">How is this different from therapy or regular coaching? <span class="faq-arrow">↓</span></p>
+      <p class="faq-a">HeartLead works through the body, not just the mind. While therapy and traditional coaching focus on insight and strategy, somatic breathwork creates shifts at the physiological level — rewiring the nervous system patterns that no amount of talking or thinking can reach on their own.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">How do we work together — online or in person? <span class="faq-arrow">↓</span></p>
+      <p class="faq-a">All sessions are conducted online via video call, which means this program is available to you wherever you are in the world. The breathwork practices are equally powerful in this format.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">How do I know which program — 6 or 12 weeks — is right for me? <span class="faq-arrow">↓</span></p>
+      <p class="faq-a">We figure that out together on the Clarity Call. I'll ask you where you are, what you're carrying, and what you're working toward — and we'll choose the container that truly fits.</p>
+    </div>
+  </div>
+  <div style="text-align: center; margin-top: 3.5rem;">
+    <a href="#" class="btn-primary">Book a Clarity Call</a>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="hl-testimonials">
+  <div class="max-w">
+    <div class="hl-t-header">
+      <div class="wf-label wf-label-light">Sekcija 7 — Testimonijali</div>
+      <p class="eyebrow eyebrow-center" style="color: var(--gold-light);">Client stories</p>
+      <h2 class="section-h section-h-light" style="font-size: clamp(2rem, 3vw, 2.75rem); max-width: 480px; margin: 0.5rem auto 0;">Women who came back<br>to <em>themselves.</em></h2>
+    </div>
+    <div class="hl-t-grid">
+      <div class="hl-t-card">
+        <div class="hl-t-qmark">"</div>
+        <p class="hl-t-text">I was running a business, managing a team, and couldn't sleep through the night. After working with Marina, my anxiety is gone and I finally feel like my body is on my side — not against me.</p>
+        <p class="hl-t-name">Plamena P.</p>
+        <p class="hl-t-role">Business Owner</p>
+      </div>
+      <div class="hl-t-card">
+        <div class="hl-t-qmark">"</div>
+        <p class="hl-t-text">Marina creates a truly sacred space for deep transformation and healing. Her presence and attunement made me feel completely safe to go places I'd never been able to reach before.</p>
+        <p class="hl-t-name">Sarah K.</p>
+        <p class="hl-t-role">Entrepreneur &amp; Leader</p>
+      </div>
+    </div>
+    <div style="text-align: center; margin-top: 3.5rem;">
+      <a href="#" class="btn-primary-light">Book a Clarity Call</a>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<div style="background: var(--cream); padding: 0 4rem;">
+  <section class="hl-final-cta">
+    <div>
+      <div class="wf-label">Sekcija 8 — Finalni CTA</div>
+      <h2 class="hl-cta-h">You've been leading<br>others. Time to <em>lead yourself.</em></h2>
+      <p class="hl-cta-body">Book a free Clarity Call. No pressure, no pitch — just an honest conversation about where you are, what you're carrying, and whether HeartLead is the right next step for you.</p>
+      <a href="#" class="btn-primary">Book a Clarity Call</a>
+    </div>
+    <div class="hl-cta-visual">
+      <div class="cc-inner">
+        <p class="cc-sublabel">Free 45-minute call</p>
+        <h3 class="cc-h">The Clarity <em>Call</em></h3>
+        <ul class="cc-list">
+          <li><span class="cc-check">✓</span>We talk honestly about where you are right now</li>
+          <li><span class="cc-check">✓</span>I listen — really listen — before offering anything</li>
+          <li><span class="cc-check">✓</span>We explore whether HeartLead is right for you</li>
+          <li><span class="cc-check">✓</span>You leave with clarity, whatever you decide</li>
+        </ul>
+        <a href="#" class="btn-primary-light">Book your free call →</a>
+        <p class="cc-disc">No sales pressure. Just an honest conversation.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="footer-bottom">
+    <p>© Thrive with Marina 2026</p>
+    <div class="footer-links-row">
+      <a href="#">About</a>
+      <a href="#">Soul-Led Body Coaching</a>
+      <a href="#">Blog</a>
+      <a href="#">Instagram</a>
+      <a href="#">Privacy Policy</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+</script>
+
+</body>
+</html>

@@ -28,6 +28,21 @@ export function Button({
   const classes = `inline-flex items-center justify-center rounded-full px-10 py-4 text-lg font-medium tracking-[-0.02em] transition-colors focus-visible:outline-none focus-visible:ring-2 ${variantClasses[variant]} ${className}`;
 
   if (href) {
+    const isExternal = href.startsWith("http://") || href.startsWith("https://");
+
+    if (isExternal) {
+      return (
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={classes}
+        >
+          {children}
+        </a>
+      );
+    }
+
     return (
       <Link href={href} className={classes}>
         {children}

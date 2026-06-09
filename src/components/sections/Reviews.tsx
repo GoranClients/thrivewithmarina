@@ -52,8 +52,8 @@ function TextReviewCard({
       <p className="mt-4 text-base leading-[1.5] tracking-[-0.02em] text-gray-200">
         {review.body}
       </p>
-      <p className="mt-8 text-sm tracking-[-0.02em] text-gray-300">
-        <span className="text-pudra-500">{review.author},</span> {review.age} years
+      <p className="mt-8 text-sm tracking-[-0.02em] text-pudra-500">
+        {review.author}
       </p>
     </article>
   );
@@ -69,13 +69,7 @@ function VideoReviewCard({
   className?: string;
 }) {
   const openLightbox = () => {
-    if (review.mp4) {
-      onPlay({ type: "mp4", src: review.mp4 });
-      return;
-    }
-    if (review.vimeoId) {
-      onPlay({ type: "vimeo", vimeoId: review.vimeoId });
-    }
+    onPlay({ type: "mp4", src: review.mp4 });
   };
 
   return (
@@ -87,32 +81,18 @@ function VideoReviewCard({
         aria-label={`Play video review from ${review.name}`}
       >
         <div className="relative aspect-[1/1.2] w-full bg-pudra-200">
-          {review.mp4 ? (
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              poster={review.poster}
-              className="absolute inset-0 h-full w-full object-cover"
-            >
-              <source src={review.mp4} type="video/mp4" />
-            </video>
-          ) : (
-            <Image
-              src={review.poster}
-              alt=""
-              fill
-              sizes="(max-width: 1023px) 100vw, 30vw"
-              className="object-cover"
-            />
-          )}
+          <Image
+            src={review.poster}
+            alt=""
+            fill
+            sizes="(max-width: 1023px) 100vw, 30vw"
+            className="object-cover"
+          />
           <PlayButton />
         </div>
       </button>
       <div className="mt-4 text-center text-white lg:text-left">
         <h3 className="font-display text-xl tracking-[-0.03em]">{review.name}</h3>
-        <p className="mt-1 text-sm text-pudra-200">{review.age} years</p>
       </div>
     </article>
   );
@@ -201,8 +181,7 @@ export function Reviews() {
           className={`mx-auto max-w-4xl text-center ${sectionHeaderMbClass}`}
         >
           <h2 ref={titleRef} className="heading-medium text-white">
-            Celebrating yoga <span className="italic">success.</span> Hear what{" "}
-            <span className="italic">our</span> clients have to say
+            The women <span className="italic">who chose themselves.</span>
           </h2>
         </header>
 

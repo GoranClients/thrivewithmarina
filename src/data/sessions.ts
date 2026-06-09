@@ -6,33 +6,33 @@ export type Session = {
 
 export const sessions: Session[] = [
   {
-    id: "vinyasa-flow",
-    title: "Vinyasa Flow",
+    id: "body-brain-80",
+    title: "80%",
     description:
-      "Vinyasa Flow is a dynamic and fluid style of yoga that synchronizes breath with movement. The classes involve a sequence of poses that transition smoothly, promoting strength, flexibility, and mindfulness. It's a great way to build heat in the body and enhance cardiovascular fitness.",
+      "of communication between body and brain travels upward — meaning breath directly changes your brain state.",
   },
   {
-    id: "hatha-yoga",
-    title: "Hatha Yoga",
+    id: "experience-16",
+    title: "16+ years",
     description:
-      "Hatha Yoga focuses on the fundamental postures and breathing techniques. It's a great starting point for beginners and emphasizes balance, flexibility, and relaxation. Hatha classes often incorporate a mix of poses and relaxation techniques to promote overall well-being.",
+      "of experience working with entrepreneurs, leaders, and women in transformation worldwide.",
   },
   {
-    id: "kundalini-yoga",
-    title: "Kundalini Yoga",
+    id: "nervous-system",
+    title: "Nervous system",
     description:
-      "Kundalini Yoga aims to awaken the spiritual energy within the body through a combination of breathwork, meditation, and dynamic postures. This practice focuses on expanding consciousness and achieving a deeper sense of self-awareness. Kundalini classes often incorporate mantra chanting and meditation.",
+      "controls everything — how you feel, perform, lead, and heal. When it's stuck in survival mode, no amount of discipline, strategy, or mindset work creates lasting change.",
   },
   {
-    id: "yin-yoga",
-    title: "Yin Yoga",
+    id: "the-method",
+    title: "The method",
     description:
-      "Yin Yoga is a slow-paced style that targets the connective tissues and joints. Poses are held for longer durations, promoting deep relaxation and increased flexibility. Yin Yoga is a wonderful way to release tension and cultivate mindfulness, making it suitable for both beginners and experienced practitioners.",
+      "combines breathwork, somatic movement, biohacking, and cognitive coaching to shift the system at the root — not just the symptoms.",
   },
   {
-    id: "power-yoga",
-    title: "Power Yoga",
+    id: "flow-state",
+    title: "Flow State",
     description:
-      "Power Yoga is a more vigorous and fitness-focused style. It builds strength, endurance, and flexibility through a series of challenging poses. Classes often include elements of cardio and can be physically demanding. Power Yoga is perfect for those looking to combine a workout with their yoga practice.",
+      "is what neuroscientists call a measurable shift in brain activity — where clarity, presence, and inner peace become your baseline, not your peak.",
   },
 ];

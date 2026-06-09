@@ -6,9 +6,9 @@ import { playfair, poppins } from "@/lib/fonts";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "ThriveWithMarina — Yoga Studio",
+  title: "Thrive with Marina | Breathwork & Holistic Coaching — Dubai",
   description:
-    "Discover balance and inner harmony at ThriveWithMarina yoga studio.",
+    "Transformational breathwork and holistic coaching for visionary women in Dubai. Regulate your nervous system and lead from a thriving body. Book a free Clarity Call.",
 };
 
 export default function RootLayout({

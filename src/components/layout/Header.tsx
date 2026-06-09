@@ -9,6 +9,7 @@ import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { headerShellClass } from "@/lib/layout";
 import { navLinks } from "@/lib/navigation";
+import { CALENDLY_CLARITY_CALL_URL } from "@/lib/site";
 
 export function Header() {
   const headerRef = useRef<HTMLElement>(null);
@@ -103,8 +104,12 @@ export function Header() {
                 </li>
               ))}
             </ul>
-            <Button href="#Contact" variant="primary" className="px-8 py-3 text-base">
-              Contact
+            <Button
+              href={CALENDLY_CLARITY_CALL_URL}
+              variant="primary"
+              className="px-8 py-3 text-base"
+            >
+              Book a Clarity Call
             </Button>
           </nav>
 
@@ -161,8 +166,12 @@ export function Header() {
           ))}
         </ul>
         <div className="mt-10">
-          <Button href="#Contact" variant="primary" className="w-full">
-            Contact
+          <Button
+            href={CALENDLY_CLARITY_CALL_URL}
+            variant="primary"
+            className="w-full"
+          >
+            Book a Clarity Call
           </Button>
         </div>
       </nav>
