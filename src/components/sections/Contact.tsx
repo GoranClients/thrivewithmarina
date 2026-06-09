@@ -182,7 +182,7 @@ export function Contact() {
           >
             <Image
               src="/assets/contact/contact.webp"
-              alt="Yoga instructor in studio"
+              alt="Marina meditating on a cushion"
               fill
               sizes="(max-width: 1023px) 87vw, 540px"
               className="object-cover object-center"
