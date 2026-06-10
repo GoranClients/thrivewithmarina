@@ -43,16 +43,16 @@ function TextReviewCard({
   return (
     <article
       data-review-card
-      className={`break-inside-avoid rounded-[32px] bg-white p-8 text-pudra-500 ${className}`}
+      className={`break-inside-avoid rounded-[32px] bg-white p-8 text-black ${className}`}
     >
       <StarRating className="mb-6 text-green" />
-      <h3 className="font-display text-2xl leading-[1.15] tracking-[-0.04em]">
+      <h3 className="font-display text-2xl leading-[1.15] tracking-[-0.04em] text-black">
         {review.title}
       </h3>
-      <p className="mt-4 text-base leading-[1.5] tracking-[-0.02em] text-gray-200">
+      <p className="mt-4 text-base leading-[1.5] tracking-[-0.02em] text-black/90">
         {review.body}
       </p>
-      <p className="mt-8 text-sm tracking-[-0.02em] text-pudra-500">
+      <p className="mt-8 text-sm tracking-[-0.02em] text-black/80">
         {review.author}
       </p>
     </article>
@@ -91,7 +91,7 @@ function VideoReviewCard({
           <PlayButton />
         </div>
       </button>
-      <div className="mt-4 text-center text-white lg:text-left">
+      <div className="mt-4 text-center text-black lg:text-left">
         <h3 className="font-display text-xl tracking-[-0.03em]">{review.name}</h3>
       </div>
     </article>
@@ -174,14 +174,14 @@ export function Reviews() {
       ref={sectionRef}
       id="Reviews"
       data-header-theme="dark"
-      className={`bg-pudra-500 ${sectionYClass}`}
+      className={`bg-pudra-100 ${sectionYClass}`}
     >
       <div className={containerClass}>
         <header
           className={`mx-auto max-w-4xl text-center ${sectionHeaderMbClass}`}
         >
-          <h2 ref={titleRef} className="heading-medium text-white">
-            The women <span className="italic">who chose themselves.</span>
+          <h2 ref={titleRef} className="heading-medium text-black">
+            They chose themselves.
           </h2>
         </header>
 

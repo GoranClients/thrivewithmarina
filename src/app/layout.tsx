@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
-import { playfair, poppins } from "@/lib/fonts";
 
 import "./globals.css";
 
@@ -17,14 +16,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      suppressHydrationWarning
-      className={`${playfair.variable} ${poppins.variable} h-full antialiased`}
-    >
+    <html lang="en" suppressHydrationWarning className="h-full antialiased">
       <body
         suppressHydrationWarning
-        className="min-h-full bg-pudra-100 font-sans text-pudra-500"
+        className="min-h-full bg-vista-white font-sans text-marsh"
       >
         <SmoothScroll>{children}</SmoothScroll>
       </body>

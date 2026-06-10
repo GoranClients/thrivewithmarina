@@ -14,44 +14,43 @@ import {
   sectionYClass,
 } from "@/lib/layout";
 
-function PlanCard({ plan }: { plan: MembershipPlan }) {
-  const isVip = plan.variant === "vip";
+const planBackgrounds = [
+  "https://cdn.prod.website-files.com/69802b78489979b8502afdda/698ed2468999d2a9cf8e54d6_pricing-two-home.webp",
+  "https://cdn.prod.website-files.com/69802b78489979b8502afdda/698ed2b8f5509be05529aec0_pricing-three-studio.webp",
+];
 
+function PlanCard({
+  plan,
+  background,
+}: {
+  plan: MembershipPlan;
+  background: string;
+}) {
   return (
     <article
       data-membership-card
-      className={`flex w-full flex-col rounded-[20px] p-8 lg:min-h-[41rem] lg:p-10 ${
-        isVip
-          ? "bg-green text-pudra-100 lg:scale-[1.03] lg:shadow-[0_24px_64px_rgba(34,30,32,0.12)]"
-          : "bg-white text-pudra-500"
-      }`}
+      className="relative flex min-h-[36rem] flex-col justify-between overflow-hidden rounded-[var(--radius-card)] p-8 text-white md:min-h-[42rem] md:p-10"
+      style={{
+        backgroundImage: `radial-gradient(circle farthest-corner at 50% 50%, rgba(31,42,28,0) 0%, rgba(31,42,28,0.74) 65%, #1f2a1c 99%), url(${background})`,
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+      }}
     >
-      <div
-        className={`inline-flex h-10 items-center rounded-full px-5 text-base font-medium tracking-[-0.02em] ${
-          isVip ? "bg-pudra-100 text-pudra-500" : "bg-green text-white"
-        }`}
-      >
-        {plan.name}
+      <div>
+        <div className="rt-button-text text-burlywood">{plan.name}</div>
+        <h3 className="mt-8 font-display text-[clamp(1.75rem,3vw,2.25rem)] leading-tight">
+          {plan.price}
+        </h3>
       </div>
 
-      <h3 className="mt-8 font-display text-[clamp(2rem,4vw,2.25rem)] leading-none tracking-[-0.04em]">
-        {plan.price}
-      </h3>
-
-      <ul
-        className={`mt-10 flex flex-col gap-4 border-t pt-10 lg:flex-1 ${
-          isVip ? "border-white/25" : "border-pudra-200"
-        }`}
-      >
+      <ul className="mt-10 flex flex-col gap-4 border-t border-white/20 pt-10">
         {plan.features.map((feature) => (
           <li
             key={feature}
-            className="relative pl-4 text-base leading-[1.5] tracking-[-0.02em]"
+            className="relative pl-4 text-sm leading-[1.5] md:text-base"
           >
             <span
-              className={`absolute top-[0.6em] left-0 size-1 rounded-full ${
-                isVip ? "bg-pudra-100" : "bg-pudra-500"
-              }`}
+              className="absolute top-[0.6em] left-0 size-1 rounded-full bg-white"
               aria-hidden
             />
             {feature}
@@ -59,12 +58,8 @@ function PlanCard({ plan }: { plan: MembershipPlan }) {
         ))}
       </ul>
 
-      <div className="mt-10 pt-2">
-        <Button
-          href="#"
-          variant={isVip ? "primary" : "dark"}
-          className="w-full"
-        >
+      <div className="mt-10">
+        <Button href="#" variant="gold">
           Explore this path
         </Button>
       </div>
@@ -117,8 +112,6 @@ export function Memberships() {
           });
         }
       });
-
-      ScrollTrigger.refresh();
     },
     { scope: sectionRef },
   );
@@ -128,21 +121,29 @@ export function Memberships() {
       ref={sectionRef}
       id="Memberships"
       data-header-theme="dark"
-      className={`bg-pudra-100 ${sectionYClass}`}
+      className={`bg-vista-white ${sectionYClass}`}
     >
       <div className={containerClass}>
-        <header className={`mx-auto text-center ${sectionHeaderMbClass}`}>
+        <header className={`mx-auto max-w-3xl text-center ${sectionHeaderMbClass}`}>
           <h2
             ref={titleRef}
-            className={`${plansTitleClass} mx-auto text-pudra-500`}
+            className={`${plansTitleClass} mx-auto text-marsh`}
           >
             Two ways to work <span className="italic">with me</span>
           </h2>
+          <p className="mt-6 text-base text-marsh/80">
+            Explore flexible paths designed to support your wellness and leadership
+            goals.
+          </p>
         </header>
 
-        <div className="flex flex-col gap-5 lg:grid lg:grid-cols-2 lg:items-stretch lg:gap-5">
-          {membershipPlans.map((plan) => (
-            <PlanCard key={plan.id} plan={plan} />
+        <div className="grid gap-5 lg:grid-cols-2">
+          {membershipPlans.map((plan, index) => (
+            <PlanCard
+              key={plan.id}
+              plan={plan}
+              background={planBackgrounds[index] ?? planBackgrounds[0]}
+            />
           ))}
         </div>
       </div>

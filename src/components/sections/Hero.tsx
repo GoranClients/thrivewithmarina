@@ -1,131 +1,168 @@
 "use client";
 
 import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import Image from "next/image";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { Button } from "@/components/ui/Button";
-import { containerClass, heroTitleClass } from "@/lib/layout";
+import { heroWords, type HeroWord } from "@/data/hero-words";
+import { containerXlClass } from "@/lib/layout";
 import {
   CALENDLY_CLARITY_CALL_URL,
   FREE_BREATHWORK_ANCHOR,
 } from "@/lib/site";
 
-const carouselImages = [
-  "/assets/hero/carousel-1.jpg",
-  "/assets/hero/carousel-2.jpg",
-];
+function HeroWordItem({
+  item,
+  isOpen,
+  onOpen,
+  onClose,
+  useClick,
+  align = "right",
+}: {
+  item: HeroWord;
+  isOpen: boolean;
+  onOpen: () => void;
+  onClose: () => void;
+  useClick: boolean;
+  align?: "left" | "right";
+}) {
+  const answerRef = useRef<HTMLDivElement>(null);
+  const innerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const answer = answerRef.current;
+    const inner = innerRef.current;
+    if (!answer || !inner) return;
+
+    if (isOpen) {
+      gsap.to(answer, {
+        height: inner.offsetHeight,
+        duration: 0.45,
+        ease: "power2.out",
+      });
+    } else {
+      gsap.to(answer, {
+        height: 0,
+        duration: 0.35,
+        ease: "power2.inOut",
+      });
+    }
+  }, [isOpen]);
+
+  return (
+    <div
+      className={`flex w-full cursor-pointer flex-col gap-0 ${
+        align === "left" ? "items-start text-left" : "items-end text-right"
+      }`}
+      onMouseEnter={() => {
+        if (!useClick) onOpen();
+      }}
+      onMouseLeave={() => {
+        if (!useClick) onClose();
+      }}
+      onClick={() => {
+        if (useClick) {
+          if (isOpen) onClose();
+          else onOpen();
+        }
+      }}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          if (isOpen) onClose();
+          else onOpen();
+        }
+      }}
+      role="button"
+      tabIndex={0}
+      aria-expanded={isOpen}
+    >
+      <div className="font-display text-[22px] leading-[1.1] text-white md:text-[34px]">
+        {item.word}
+      </div>
+      <div ref={answerRef} className="h-0 w-full max-w-[21.25rem] overflow-hidden">
+        <div ref={innerRef} className="pt-[1.6rem]">
+          <p
+            className={`text-sm leading-[1.35] text-white/90 md:text-base ${
+              align === "left" ? "text-left" : "text-right"
+            }`}
+          >
+            {item.description}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export function Hero() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const slidesRef = useRef<HTMLDivElement>(null);
+  const [activeWordId, setActiveWordId] = useState<string | null>(null);
+  const [useClick, setUseClick] = useState(false);
 
-  useGSAP(
-    () => {
-      const slides = gsap.utils.toArray<HTMLElement>(
-        ".hero-slide",
-        slidesRef.current,
-      );
+  useEffect(() => {
+    const media = window.matchMedia("(max-width: 767px)");
+    const update = () => setUseClick(media.matches);
+    update();
+    media.addEventListener("change", update);
+    return () => media.removeEventListener("change", update);
+  }, []);
 
-      if (slides.length < 2) return;
-
-      gsap.set(slides[0], { opacity: 1 });
-      gsap.set(slides.slice(1), { opacity: 0 });
-
-      const timeline = gsap.timeline({ repeat: -1, repeatDelay: 0.5 });
-
-      slides.forEach((slide, index) => {
-        const next = slides[(index + 1) % slides.length];
-        timeline.to(slide, { opacity: 0, duration: 1.8, ease: "power2.inOut" });
-        timeline.to(
-          next,
-          { opacity: 1, duration: 1.8, ease: "power2.inOut" },
-          "<",
-        );
-        timeline.to({}, { duration: 4 });
-      });
-
-      gsap.matchMedia().add("(prefers-reduced-motion: reduce)", () => {
-        timeline.pause();
-        gsap.set(slides, { opacity: 0 });
-        gsap.set(slides[0], { opacity: 1 });
-      });
-    },
-    { scope: sectionRef },
-  );
+  const heroWordItems = (align: "left" | "right") =>
+    heroWords.map((item) => (
+      <HeroWordItem
+        key={item.id}
+        item={item}
+        align={align}
+        isOpen={activeWordId === item.id}
+        useClick={useClick}
+        onOpen={() => setActiveWordId(item.id)}
+        onClose={() =>
+          setActiveWordId((current) => (current === item.id ? null : current))
+        }
+      />
+    ));
 
   return (
     <section
-      ref={sectionRef}
       id="Hero"
       data-header-theme="light"
-      className="relative flex min-h-[100svh] items-end overflow-hidden pb-16 pt-32 md:min-h-[56.25rem] md:pb-[5.625rem] md:pt-[22.8125rem]"
+      className="relative z-[5] min-h-svh w-full max-md:overflow-visible md:h-svh md:overflow-hidden"
     >
-      <div ref={slidesRef} className="absolute inset-0">
-        {carouselImages.map((src, index) => (
-          <div
-            key={src}
-            className="hero-slide absolute inset-0 opacity-0 will-change-[opacity]"
-            aria-hidden={index !== 0}
-          >
-            <Image
-              src={src}
-              alt=""
-              fill
-              priority={index === 0}
-              sizes="100vw"
-              className="object-cover"
-            />
-          </div>
-        ))}
-        <div
-          className="hero-overlay pointer-events-none absolute inset-0 z-[1] bg-black/20"
-          aria-hidden
-        />
-      </div>
-
       <div
-        className={`relative z-10 grid w-full gap-8 md:grid-cols-[minmax(0,1fr)_minmax(0,0.5fr)] md:grid-rows-[auto_auto_auto] md:gap-x-[9.5rem] md:gap-y-10 ${containerClass}`}
+        className={`relative z-10 mx-auto flex min-h-svh w-full items-start pt-32 pb-10 md:h-full md:items-center md:py-[7.5rem] ${containerXlClass}`}
       >
-        <h1
-          className={`${heroTitleClass} order-1 text-center text-white md:order-none md:col-start-1 md:row-start-1 md:text-left`}
-        >
-          <span className="block">You&apos;ve built</span>
-          <span className="block">the success.</span>
-          <span className="block">
-            But your body is <span className="italic">running on empty.</span>
-          </span>
-        </h1>
-
-        <div className="order-2 mx-auto flex w-full max-w-[280px] justify-center md:order-none md:col-start-2 md:row-span-3 md:row-start-1 md:mx-0 md:max-w-[324px] md:self-center">
-          <div className="relative aspect-[324/434] w-full overflow-hidden rounded-[999px]">
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              poster="/assets/hero/hero-video-poster.jpg"
-              className="absolute inset-0 h-full w-full object-cover"
-            >
-              <source src="/assets/hero/hero-video.mp4" type="video/mp4" />
-            </video>
+        <div className="flex w-full flex-col gap-12 lg:flex-row lg:items-center lg:justify-between lg:gap-8">
+          <div className="max-w-[57.5rem] shrink-0">
+            <h1 className="font-display text-[clamp(2rem,5vw,4rem)] font-light leading-[1.1] text-white">
+              You&apos;ve built
+              <br />
+              the success.
+              <br />
+              But your body is
+              <br />
+              running on empty.
+            </h1>
+            <p className="mt-6 max-w-xl text-base leading-[1.4] tracking-[-0.02em] text-white/90 md:text-lg">
+              I help visionary women lead from a regulated nervous system — so your
+              energy, your presence, and your legacy finally match the vision you
+              carry inside.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <Button href={CALENDLY_CLARITY_CALL_URL} variant="primary">
+                Book a Clarity Call
+              </Button>
+              <Button href={FREE_BREATHWORK_ANCHOR} variant="secondary">
+                Free Breathwork Practice
+              </Button>
+            </div>
+            <div className="mt-6 grid grid-cols-2 gap-x-4 gap-y-4 lg:hidden">
+              {heroWordItems("left")}
+            </div>
           </div>
-        </div>
 
-        <p className="order-3 max-w-[28.5556em] text-center text-base leading-[1.4] tracking-[-0.02em] text-white md:order-none md:col-start-1 md:row-start-2 md:text-left md:text-lg">
-          I help visionary women lead from a regulated nervous system — so your
-          energy, your presence, and your legacy finally match the vision you
-          carry inside.
-        </p>
-
-        <div className="order-4 flex flex-wrap justify-center gap-4 md:order-none md:col-start-1 md:row-start-3 md:justify-start">
-          <Button href={CALENDLY_CLARITY_CALL_URL} variant="primary">
-            Book a Clarity Call
-          </Button>
-          <Button href={FREE_BREATHWORK_ANCHOR} variant="secondary">
-            Free Breathwork Practice
-          </Button>
+          <div className="hidden w-full flex-col items-end gap-5 lg:flex lg:max-w-[21.25rem] lg:shrink-0">
+            {heroWordItems("right")}
+          </div>
         </div>
       </div>
     </section>

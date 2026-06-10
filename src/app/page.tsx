@@ -1,25 +1,25 @@
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
-import { Contact } from "@/components/sections/Contact";
-import { GroupSlider } from "@/components/sections/GroupSlider";
-import { Hero } from "@/components/sections/Hero";
+import { BookingV2 } from "@/components/sections/BookingV2";
+import { FreeBreathwork } from "@/components/sections/FreeBreathwork";
+import { GalleryV2 } from "@/components/sections/GalleryV2";
+import { HeroWellnessStack } from "@/components/sections/HeroWellnessStack";
 import { Instructors } from "@/components/sections/Instructors";
 import { Memberships } from "@/components/sections/Memberships";
 import { Reviews } from "@/components/sections/Reviews";
-import { Sessions } from "@/components/sections/Sessions";
 
 export default function Home() {
   return (
     <>
       <Header />
       <main>
-        <Hero />
-        <Sessions />
+        <HeroWellnessStack />
         <Instructors />
+        <FreeBreathwork />
         <Reviews />
-        <GroupSlider />
+        <GalleryV2 />
         <Memberships />
-        <Contact />
+        <BookingV2 />
       </main>
       <Footer />
     </>

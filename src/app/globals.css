@@ -1,21 +1,106 @@
 @import "tailwindcss";
 @import "lenis/dist/lenis.css";
 
+@font-face {
+  font-family: Satoshi;
+  src: url("/fonts/satoshi-regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Satoshi;
+  src: url("/fonts/satoshi-medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Satoshi;
+  src: url("/fonts/satoshi-bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Orticalinear;
+  src: url("/fonts/orticalinear-regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Orticalinear;
+  src: url("/fonts/orticalinear-light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Orticalinear;
+  src: url("/fonts/orticalinear-medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Avelora;
+  src: url("/fonts/avelora-regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Avelora;
+  src: url("/fonts/avelora-light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  --pudra-500: #221e20;
-  --pudra-100: #f9f7f6;
-  --pudra-200: #e2d7d2;
-  --pudra: #ece8e7;
-  --green: #909c87;
-  --green-secondary: #636d5c;
-  --gray-300: #514f56;
-  --gray-200: #949191;
-  --gray-100: #ebebeb;
-  --gray: #efefef;
-  --black: #18171b;
+  --vista-white: #f9f6f3;
+  --marsh: #1f2a1c;
+  --kaitoke-green: #2f3c2c;
+  --burlywood: #d8aa78;
+  --platinum: #e7e9e1;
+  --grullo: #ada07d;
+  --shadow-gold: #9e9271;
+  --soft-black: #111111;
+  --dim-gray: #676767;
   --white: #ffffff;
-  --background: var(--pudra-100);
-  --foreground: var(--pudra-500);
+  --black: #000000;
+
+  --pudra-500: var(--marsh);
+  --pudra-100: var(--vista-white);
+  --pudra-200: var(--platinum);
+  --pudra: var(--platinum);
+  --green: var(--kaitoke-green);
+  --green-secondary: var(--marsh);
+  --gray-300: var(--dim-gray);
+  --gray-200: var(--grullo);
+  --gray-100: var(--platinum);
+  --gray: var(--platinum);
+
+  --background: var(--vista-white);
+  --foreground: var(--marsh);
+
+  --section-gap: 7.5rem;
+  --section-gap-md: 6.875rem;
+  --radius-pill: 15.625rem;
+  --radius-card: 1.25rem;
+  --radius-input: 0.625rem;
+
+  --font-body: Satoshi, Arial, sans-serif;
+  --font-heading: Orticalinear, Arial, sans-serif;
+  --font-display-alt: Avelora, Arial, sans-serif;
 }
 
 @theme inline {
@@ -32,8 +117,15 @@
   --color-gray-100: var(--gray-100);
   --color-gray: var(--gray);
   --color-black: var(--black);
-  --font-sans: var(--font-poppins);
-  --font-display: var(--font-playfair);
+  --color-marsh: var(--marsh);
+  --color-vista-white: var(--vista-white);
+  --color-burlywood: var(--burlywood);
+  --color-platinum: var(--platinum);
+  --color-grullo: var(--grullo);
+  --color-shadow-gold: var(--shadow-gold);
+  --color-kaitoke-green: var(--kaitoke-green);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-heading);
 }
 
 html {
@@ -43,43 +135,58 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-poppins), system-ui, sans-serif;
+  font-family: var(--font-body);
 }
 
 .font-display {
-  font-family: var(--font-playfair), Georgia, serif;
+  font-family: var(--font-heading);
 }
 
-/* Webflow: .heading-large / .heading-medium */
+.font-display-alt {
+  font-family: var(--font-display-alt);
+}
+
 .heading-large {
-  font-family: var(--font-playfair), Georgia, serif;
+  font-family: var(--font-display-alt);
   font-size: clamp(2.5rem, 6vw, 5rem);
-  font-weight: 400;
+  font-weight: 300;
   line-height: 1;
   letter-spacing: -0.03em;
 }
 
 .heading-medium {
-  font-family: var(--font-playfair), Georgia, serif;
+  font-family: var(--font-heading);
   font-size: clamp(2rem, 5vw, 4.25rem);
-  font-weight: 400;
+  font-weight: 300;
   line-height: 1.1;
   letter-spacing: -0.06em;
 }
 
-/* Hero / video: beli linkovi samo kad header nije u pill stanju */
+.heading-display-hero {
+  font-family: var(--font-display-alt);
+  font-size: clamp(2.5rem, 13vw, 15rem);
+  font-weight: 300;
+  line-height: 0.6;
+}
+
+.rt-button-text {
+  font-size: 0.78125rem;
+  font-weight: 700;
+  letter-spacing: 0.125rem;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
 header[data-theme="light"]:not([data-scrolled="true"]) .header-link {
   color: var(--white);
 }
 
-/* Posle scroll-a: bela pill → uvek tamni linkovi (čitljivo na svim pozadinama) */
 header[data-scrolled="true"] .header-link {
-  color: var(--pudra-500);
+  color: var(--marsh);
 }
 
-/* Krem sekcije (Sessions, Experts content, …) */
 header[data-theme="dark"] .header-link {
-  color: var(--pudra-500);
+  color: var(--marsh);
 }
 
 @media (prefers-reduced-motion: reduce) {

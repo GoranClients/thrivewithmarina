@@ -65,12 +65,12 @@ export function Header() {
         ref={headerRef}
         data-theme="light"
         data-scrolled={scrolled ? "true" : "false"}
-        className={`fixed inset-x-0 top-0 z-50 px-4 pt-[18px] transition-[padding] duration-300 md:px-[68px] ${scrolled ? "pt-3" : ""}`}
+        className={`fixed inset-x-0 top-0 z-50 px-4 pt-[18px] transition-[padding] duration-300 md:px-5 lg:px-[68px] ${scrolled ? "pt-3" : ""}`}
       >
         <div
           className={`${headerShellClass} transition-all duration-500 ${
             scrolled
-              ? "bg-white/90 shadow-[0_8px_32px_rgba(34,30,32,0.08)] backdrop-blur-xl"
+              ? "bg-white/90 shadow-[0_8px_32px_rgba(31,42,28,0.08)] backdrop-blur-xl"
               : "bg-white/[0.12] backdrop-blur-[60px]"
           }`}
         >
@@ -125,13 +125,13 @@ export function Header() {
               className={`flex w-5 flex-col gap-1.5 ${menuOpen ? "gap-0" : ""}`}
             >
               <span
-                className={`block h-0.5 w-full bg-pudra-500 transition-transform duration-300 ${menuOpen ? "translate-y-2 rotate-45" : ""}`}
+                className={`block h-0.5 w-full bg-marsh transition-transform duration-300 ${menuOpen ? "translate-y-2 rotate-45" : ""}`}
               />
               <span
-                className={`block h-0.5 w-full bg-pudra-500 transition-opacity duration-300 ${menuOpen ? "opacity-0" : ""}`}
+                className={`block h-0.5 w-full bg-marsh transition-opacity duration-300 ${menuOpen ? "opacity-0" : ""}`}
               />
               <span
-                className={`block h-0.5 w-full bg-pudra-500 transition-transform duration-300 ${menuOpen ? "-translate-y-2 -rotate-45" : ""}`}
+                className={`block h-0.5 w-full bg-marsh transition-transform duration-300 ${menuOpen ? "-translate-y-2 -rotate-45" : ""}`}
               />
             </span>
           </button>
@@ -139,7 +139,7 @@ export function Header() {
       </header>
 
       <div
-        className={`fixed inset-0 z-40 bg-pudra-500/40 backdrop-blur-sm transition-opacity duration-300 lg:hidden ${
+        className={`fixed inset-0 z-40 bg-marsh/40 backdrop-blur-sm transition-opacity duration-300 lg:hidden ${
           menuOpen ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
         onClick={() => setMenuOpen(false)}
@@ -148,7 +148,7 @@ export function Header() {
 
       <nav
         aria-label="Mobile"
-        className={`fixed inset-y-0 right-0 z-50 flex w-[min(100%,320px)] flex-col bg-pudra-100 px-8 py-28 transition-transform duration-500 lg:hidden ${
+        className={`fixed inset-y-0 right-0 z-50 flex w-[min(100%,320px)] flex-col bg-vista-white px-8 py-28 transition-transform duration-500 lg:hidden ${
           menuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -158,7 +158,7 @@ export function Header() {
               <Link
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className="text-2xl font-display text-pudra-500"
+                className="text-2xl font-display text-marsh"
               >
                 {link.label}
               </Link>

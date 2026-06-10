@@ -1,3 +1,5 @@
+import { INSTAGRAM_URL } from "@/lib/site";
+
 export const navLinks = [
   { label: "Trainers", href: "#Experts" },
   { label: "Reviews", href: "#Reviews" },
@@ -13,15 +15,7 @@ export const utilityLinks = [
 
 export const socialLinks = [
   {
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/company/digitalbutlers/",
-  },
-  {
-    label: "Twitter",
-    href: "https://twitter.com/Digital_Butlers",
-  },
-  {
-    label: "Facebook",
-    href: "https://www.facebook.com/profile.php?id=100090264223869",
+    label: "Instagram",
+    href: INSTAGRAM_URL,
   },
 ] as const;
