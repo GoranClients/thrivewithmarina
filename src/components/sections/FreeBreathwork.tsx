@@ -60,8 +60,9 @@ export function FreeBreathwork() {
               data-breathwork-reveal
               className="mt-6 max-w-md text-base leading-[1.5] text-marsh/80 md:text-lg"
             >
-              Enter your email to receive a guided breathwork practice — a simple
-              way to regulate your nervous system and return to clarity.
+              Regulate your nervous system, boost your clarity, and start your day
+              from a place of power — not pressure. In just 5 minutes, every
+              morning.
             </p>
 
             <form
