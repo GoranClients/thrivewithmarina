@@ -58,14 +58,17 @@ export const ParallaxPanels = forwardRef<HTMLElement, ParallaxPanelsProps>(
               data-wellness-reveal
               className="font-display text-[clamp(1.75rem,4vw,3rem)] font-light leading-tight text-white"
             >
-              Inspiring mindful living through purposeful practice and wellness
+              The flow of being supported by me
             </h2>
             <p
               data-wellness-reveal
-              className="mx-auto mt-6 max-w-[23.625rem] text-base text-white/80"
+              className="mx-auto mt-6 max-w-[36rem] text-base leading-[1.55] text-white/80 md:text-lg"
             >
-              Discover calm, strength, and balance through mindful breathwork and
-              somatic coaching.
+              I&apos;m a transformational holistic vitality coach and mentor.
+              Through four pillars—biology, mindset energy, planning, and healthy
+              authentic leadership—I help you restore body vitality, regulate your
+              nervous system, and step into the next level of conscious, authentic
+              leadership.
             </p>
             <div className="relative z-20 mt-8">
               <Link
@@ -91,19 +94,21 @@ export const ParallaxPanels = forwardRef<HTMLElement, ParallaxPanelsProps>(
                   data-wellness-reveal
                   className="flex flex-col items-center text-center"
                 >
-                  <div className="mb-5 flex h-14 w-14 max-w-[3.625rem] items-center justify-center md:mb-[1.4rem]">
+                  <div className="mb-5 flex h-[calc(2.5rem*56/59)] w-10 shrink-0 items-center justify-center md:mb-[1.4rem] md:h-[3.5rem] md:w-[3.6875rem]">
                     <Image
                       src={panel.icon}
                       alt=""
                       width={59}
                       height={56}
-                      className="h-auto w-full"
+                      className="size-full object-contain"
                     />
                   </div>
-                  <h3 className="font-display text-lg text-white md:text-xl">
+                  <h3 className="font-display text-base leading-tight text-white md:text-xl">
                     {panel.title}
                   </h3>
-                  <p className="mt-3 text-sm text-white/80">{panel.description}</p>
+                  <p className="mt-3 text-sm leading-[1.45] text-white/80">
+                    {panel.description}
+                  </p>
                 </article>
               ))}
             </div>

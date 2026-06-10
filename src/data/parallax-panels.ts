@@ -6,42 +6,38 @@ export type ParallaxPanel = {
   image: string;
 };
 
-/** Breathiva wellness / therapy panels */
+/** Wellness pillars — Biology, Mindset, Planning, Leadership */
 export const parallaxPanels: ParallaxPanel[] = [
   {
-    id: "meditation",
-    title: "Meditation",
+    id: "biology",
+    title: "Biology",
     description:
-      "Calm the mind through breathing, stillness, and daily awareness.",
-    icon: "https://cdn.prod.website-files.com/69802b78489979b8502afdda/69968beea4278634fbc56b91_class-logo-1.svg",
-    image:
-      "https://cdn.prod.website-files.com/69802b78489979b8502afdda/699d27968716e3fcd6a5f771_rt-home-v2-1.webp",
+      "Exhaustion, weight gain, and hormonal swings are not your normal—optimize sleep, nutrition, movement, and stress with minimal time so daily rituals support your whole bodily system.",
+    icon: "/assets/wellness/biology.svg",
+    image: "",
   },
   {
-    id: "aromatherapy",
-    title: "Aromatherapy",
+    id: "mindset-energy",
+    title: "Mindset energy",
     description:
-      "Natural essential oils support relaxation and emotional balance.",
-    icon: "https://cdn.prod.website-files.com/69802b78489979b8502afdda/69968bef8c25d3ba9a0a4cbc_class-logo-2.svg",
-    image:
-      "https://cdn.prod.website-files.com/69802b78489979b8502afdda/699d2796afab459a7be62366_rt-home-v2-3.webp",
+      "Your mindset generates energy—we uncover subconscious patterns, trauma, and self-talk that limit you, then replace them with habits for clarity and higher performance.",
+    icon: "/assets/wellness/mindset-energy.svg",
+    image: "",
   },
   {
-    id: "somatic",
-    title: "Somatic practice",
+    id: "planning",
+    title: "Planning",
     description:
-      "Traditional movement builds strength, balance, and body flexibility.",
-    icon: "https://cdn.prod.website-files.com/69802b78489979b8502afdda/69968bee74a5b343a1ac7917_class-logo-3.svg",
-    image:
-      "https://cdn.prod.website-files.com/69802b78489979b8502afdda/699d279664b9256eaf330d25_rt-home-v2-2.webp",
+      "Structure is freedom—we set non-negotiable boundaries, streamline your calendar, and protect time for what you love so you maximize output and perform at your highest level.",
+    icon: "/assets/wellness/planning.svg",
+    image: "",
   },
   {
-    id: "breathwork",
-    title: "Breathwork",
+    id: "leadership",
+    title: "Healthy Authentic Leadership",
     description:
-      "Healing breath patterns promote relaxation and inner harmony.",
-    icon: "https://cdn.prod.website-files.com/69802b78489979b8502afdda/69968beed005d21fe6c56ae7_class-logo-4.svg",
-    image:
-      "https://cdn.prod.website-files.com/69802b78489979b8502afdda/699d3eecee8c59dd8c0c83c0_rt-home-v3-2.webp",
+      "You cannot lead others until you lead yourself—build conscious awareness, step beyond comfort zones, and influence those around you, because what you do matters.",
+    icon: "/assets/wellness/leadership.svg",
+    image: "",
   },
 ];

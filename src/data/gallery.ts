@@ -1,12 +1,20 @@
+export type GalleryVariant =
+  | "side-top"
+  | "side-bottom"
+  | "middle-card"
+  | "middle-bottom"
+  | "right-top"
+  | "right-bottom";
+
 export type GalleryItem = {
   id: string;
   src: string;
   alt: string;
   label: string;
-  variant: "side-top" | "side-bottom" | "middle" | "right-top" | "right-bottom";
+  variant: GalleryVariant;
 };
 
-/** Figma rt-gallery-v2 — 6 items from Breathiva */
+/** Figma rt-gallery-v2 — grid order: g1, g3, g5 | g2, g4, g6 */
 export const galleryItems: GalleryItem[] = [
   {
     id: "g1",
@@ -16,25 +24,11 @@ export const galleryItems: GalleryItem[] = [
     variant: "side-top",
   },
   {
-    id: "g2",
-    src: "https://cdn.prod.website-files.com/69802b78489979b8502afdda/699d670edb82dc0a321fdfa3_home-gallery-2.webp",
-    alt: "Studio practice",
-    label: "Studio",
-    variant: "side-bottom",
-  },
-  {
     id: "g3",
     src: "https://cdn.prod.website-files.com/69802b78489979b8502afdda/699d6f81236b4ac2a2578add_home-gallery-3.webp",
     alt: "Group session",
     label: "Group session",
-    variant: "middle",
-  },
-  {
-    id: "g4",
-    src: "https://cdn.prod.website-files.com/69802b78489979b8502afdda/699d6f822dad791a839b8422_home-gallery-4.webp",
-    alt: "Meditation",
-    label: "Meditation",
-    variant: "middle",
+    variant: "middle-card",
   },
   {
     id: "g5",
@@ -42,6 +36,20 @@ export const galleryItems: GalleryItem[] = [
     alt: "Coaching",
     label: "Coaching",
     variant: "right-top",
+  },
+  {
+    id: "g2",
+    src: "https://cdn.prod.website-files.com/69802b78489979b8502afdda/699d670edb82dc0a321fdfa3_home-gallery-2.webp",
+    alt: "Studio practice",
+    label: "Studio",
+    variant: "side-bottom",
+  },
+  {
+    id: "g4",
+    src: "https://cdn.prod.website-files.com/69802b78489979b8502afdda/699d6f822dad791a839b8422_home-gallery-4.webp",
+    alt: "Meditation",
+    label: "Meditation",
+    variant: "middle-bottom",
   },
   {
     id: "g6",
