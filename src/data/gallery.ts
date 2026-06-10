@@ -8,54 +8,66 @@ export type GalleryVariant =
 
 export type GalleryItem = {
   id: string;
+  href: string;
   src: string;
   alt: string;
   label: string;
   variant: GalleryVariant;
 };
 
-/** Figma rt-gallery-v2 — grid order: g1, g3, g5 | g2, g4, g6 */
-export const galleryItems: GalleryItem[] = [
+const variants: GalleryVariant[] = [
+  "side-top",
+  "middle-card",
+  "right-top",
+  "side-bottom",
+  "middle-bottom",
+  "right-bottom",
+];
+
+/** 6 most recent blog posts — grid order: 1,3,5 | 2,4,6 */
+const blogPosts = [
   {
-    id: "g1",
-    src: "https://cdn.prod.website-files.com/69802b78489979b8502afdda/699d6711a1d9a34f42c6cd1b_home-gallery-1.webp",
-    alt: "Breathwork session",
-    label: "Breathwork",
-    variant: "side-top",
+    href: "https://thrivewithmarina.com/your-identity-is-not-what-you-think-it-is-the-neuroscience-of-who-you-are-actually-becoming/",
+    src: "https://thrivewithmarina.com/wp-content/uploads/2026/04/Your-Identity-Is-Not-What-You-Think-It-Is.webp",
+    label: "Your Identity Is Not What You Think It Is",
   },
   {
-    id: "g3",
-    src: "https://cdn.prod.website-files.com/69802b78489979b8502afdda/699d6f81236b4ac2a2578add_home-gallery-3.webp",
-    alt: "Group session",
-    label: "Group session",
-    variant: "middle-card",
+    href: "https://thrivewithmarina.com/the-psychiatrist-who-discovered-that-the-breath-could-do-what-lsd-did/",
+    src: "https://thrivewithmarina.com/wp-content/uploads/2026/04/The-Psychiatrist-Who-Discovered-That-the-Breath-Could-Do-What-LSD-Did.webp",
+    label: "The Psychiatrist Who Discovered That the Breath Could Do What LSD Did",
   },
   {
-    id: "g5",
-    src: "https://cdn.prod.website-files.com/69802b78489979b8502afdda/699d670e0b46c3452f6961a5_home-gallery-5.webp",
-    alt: "Coaching",
-    label: "Coaching",
-    variant: "right-top",
+    href: "https://thrivewithmarina.com/why-you-feel-constantly-activated-and-what-most-people-still-dont-understand-about-it/",
+    src: "https://thrivewithmarina.com/wp-content/uploads/2026/03/69c519f2c1880-thumbnail.jpg",
+    label: "Why You Feel Constantly Activated",
   },
   {
-    id: "g2",
-    src: "https://cdn.prod.website-files.com/69802b78489979b8502afdda/699d670edb82dc0a321fdfa3_home-gallery-2.webp",
-    alt: "Studio practice",
-    label: "Studio",
-    variant: "side-bottom",
+    href: "https://thrivewithmarina.com/when-the-world-feels-uncertain-what-happens-in-the-brain-and-nervous-system/",
+    src: "https://thrivewithmarina.com/wp-content/uploads/2026/03/When-the-World-Feels-Uncertain-What-Happens-in-the-Brain-and-Nervous-System.webp",
+    label: "When the World Feels Uncertain",
   },
   {
-    id: "g4",
-    src: "https://cdn.prod.website-files.com/69802b78489979b8502afdda/699d6f822dad791a839b8422_home-gallery-4.webp",
-    alt: "Meditation",
-    label: "Meditation",
-    variant: "middle-bottom",
+    href: "https://thrivewithmarina.com/unconditional-love-is-not-an-ideal/",
+    src: "https://thrivewithmarina.com/wp-content/uploads/2026/02/Unconditional-Love-Is-Not-an-Ideal.webp",
+    label: "Unconditional Love Is Not an Ideal",
   },
   {
-    id: "g6",
-    src: "https://cdn.prod.website-files.com/69802b78489979b8502afdda/699d670e4a80df9dcc44573b_home-gallery-6.webp",
-    alt: "Movement",
-    label: "Movement",
-    variant: "right-bottom",
+    href: "https://thrivewithmarina.com/theta-brain-waves-the-hidden-key-to-unlocking-your-creative-genius-and-emotional-mastery/",
+    src: "https://thrivewithmarina.com/wp-content/uploads/2026/01/Theta-Brain-Waves-The-Hidden-Key-to-Unlocking-Your-Creative-Genius-and-Emotional-Mastery.webp",
+    label: "Theta Brain Waves",
   },
 ];
+
+const gridOrder = [0, 3, 4, 1, 2, 5];
+
+export const galleryItems: GalleryItem[] = gridOrder.map((postIndex, gridIndex) => {
+  const post = blogPosts[postIndex];
+  return {
+    id: `blog-${postIndex + 1}`,
+    href: post.href,
+    src: post.src,
+    alt: post.label,
+    label: post.label,
+    variant: variants[gridIndex],
+  };
+});

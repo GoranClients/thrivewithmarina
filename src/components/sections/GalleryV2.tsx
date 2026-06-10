@@ -6,7 +6,11 @@ import { useGSAP } from "@gsap/react";
 import Image from "next/image";
 import { useRef } from "react";
 
-import { galleryItems, type GalleryItem, type GalleryVariant } from "@/data/gallery";
+import {
+  galleryItems,
+  type GalleryItem,
+  type GalleryVariant,
+} from "@/data/gallery";
 import { containerClass } from "@/lib/layout";
 
 const headingWords = [
@@ -19,7 +23,7 @@ const headingWords = [
   "from",
   "our",
   { type: "pill" as const },
-  "sessions",
+  "blog",
 ];
 
 const imageRadius: Record<GalleryVariant, string> = {
@@ -35,6 +39,9 @@ const wrapperOffset: Partial<Record<GalleryVariant, string>> = {
   "middle-card": "md:-mt-[6.9375rem] min-[992px]:-mt-[8.0625rem]",
 };
 
+const gridClassName =
+  "hidden grid-cols-3 items-start gap-x-[1.875rem] gap-y-[2.125rem] md:grid md:gap-y-[4.1875rem] min-[992px]:gap-y-[6.25rem] xl:gap-x-[6.8125rem]";
+
 function GalleryCard({
   item,
   reveal,
@@ -44,7 +51,7 @@ function GalleryCard({
 }) {
   return (
     <a
-      href={item.src}
+      href={item.href}
       target="_blank"
       rel="noopener noreferrer"
       data-gallery-reveal={reveal ? "" : undefined}
@@ -58,7 +65,11 @@ function GalleryCard({
           alt={item.alt}
           fill
           sizes="(max-width: 767px) 80vw, 33vw"
-          className="object-cover"
+          className="gallery-cover-image object-cover"
+        />
+        <div
+          className="gallery-cover-tone pointer-events-none absolute inset-0"
+          aria-hidden
         />
         <div className="absolute inset-0 flex items-center justify-center bg-[#11111199] opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-focus-visible:opacity-100">
           <span className="relative block h-[3.125rem] w-[3.125rem]" aria-hidden>
@@ -67,10 +78,30 @@ function GalleryCard({
           </span>
         </div>
       </div>
-      <p className="pt-4 font-display text-2xl leading-tight tracking-[-0.03125rem] text-white">
+      <p className="line-clamp-3 pt-4 font-display text-xl leading-tight tracking-[-0.03125rem] text-white md:text-2xl">
         {item.label}
       </p>
     </a>
+  );
+}
+
+function GalleryGrid({
+  items,
+  reveal,
+  className,
+}: {
+  items: GalleryItem[];
+  reveal?: boolean;
+  className?: string;
+}) {
+  if (items.length === 0) return null;
+
+  return (
+    <div className={`${gridClassName} ${className ?? ""}`}>
+      {items.map((item) => (
+        <GalleryCard key={item.id} item={item} reveal={reveal} />
+      ))}
+    </div>
   );
 }
 
@@ -160,11 +191,11 @@ export function GalleryV2() {
           })}
         </div>
 
-        <div className="hidden grid-cols-3 items-start gap-x-[1.875rem] gap-y-[2.125rem] pt-[1.875rem] md:grid md:gap-y-[4.1875rem] md:pt-[14rem] min-[992px]:gap-y-[6.25rem] xl:gap-x-[6.8125rem]">
-          {galleryItems.map((item) => (
-            <GalleryCard key={item.id} item={item} reveal />
-          ))}
-        </div>
+        <GalleryGrid
+          items={galleryItems}
+          reveal
+          className="pt-[1.875rem] md:pt-[14rem]"
+        />
 
         <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 md:hidden">
           {galleryItems.map((item) => (
