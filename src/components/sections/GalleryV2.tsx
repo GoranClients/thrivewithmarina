@@ -14,16 +14,15 @@ import {
 import { containerClass } from "@/lib/layout";
 
 const headingWords = [
-  "A",
-  "peaceful",
+  "Insights",
+  "on",
+  "breath,",
   { type: "circle" as const },
-  "collection",
-  "of",
-  "moments",
-  "from",
-  "our",
+  "neuroscience,",
+  "and",
+  "the",
   { type: "pill" as const },
-  "blog",
+  "nervous system",
 ];
 
 const imageRadius: Record<GalleryVariant, string> = {
