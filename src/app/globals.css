@@ -257,6 +257,63 @@ header[data-theme="dark"] .header-link {
   color: var(--marsh);
 }
 
+.hero-video-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.125rem;
+  height: 3.125rem;
+  padding: 0;
+  border: none;
+  border-radius: 100%;
+  background-color: rgb(255 255 255 / 30%);
+  backdrop-filter: blur(0.9375rem);
+  cursor: pointer;
+  translate: -50% -50%;
+}
+
+.hero-video-button:focus-visible {
+  outline: 2px solid white;
+  outline-offset: 2px;
+}
+
+.hero-video-button-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-video-button-icon[hidden] {
+  display: none !important;
+}
+
+@media (min-width: 1280px) {
+  .hero-video-button {
+    top: 64%;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-video-button {
+    top: 58%;
+    left: 0.9375rem;
+    translate: none;
+  }
+}
+
+@media (max-width: 479px) {
+  .hero-video-button {
+    top: 7.5rem;
+    right: 0.9375rem;
+    left: auto;
+    translate: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

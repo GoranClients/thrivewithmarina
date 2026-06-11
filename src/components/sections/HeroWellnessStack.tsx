@@ -3,7 +3,8 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import { useRef } from "react";
+import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 
 import { Hero } from "@/components/sections/Hero";
 import { ParallaxPanels } from "@/components/sections/ParallaxPanels";
@@ -16,7 +17,12 @@ const HERO_VIDEO_MP4 =
   "https://cdn.prod.website-files.com/69802b78489979b8502afdda%2F69a96115a4f3fb9f6af568df_3327726-hd_1920_1080_24fps%20%281%29_mp4.mp4";
 const HERO_POSTER =
   "https://cdn.prod.website-files.com/69802b78489979b8502afdda%2F69a96115a4f3fb9f6af568df_3327726-hd_1920_1080_24fps%20%281%29_poster.0000000.jpg";
+const HERO_PAUSE_ICON =
+  "https://cdn.prod.website-files.com/69802b78489979b8502afdda/69c22dbcaba159d86c3ee52b_hero-pause-icon.svg";
+const HERO_PLAY_ICON =
+  "https://cdn.prod.website-files.com/69802b78489979b8502afdda/69c22d87600590517def2dff_hero-play-icon.svg";
 
+const HERO_VIDEO_ID = "hero-background-video";
 const OVERLAP_START_OPACITY = 0.68;
 
 export function HeroWellnessStack() {
@@ -24,6 +30,42 @@ export function HeroWellnessStack() {
   const marshOverlayRef = useRef<HTMLDivElement>(null);
   const sectionBackdropRef = useRef<HTMLDivElement>(null);
   const wellnessRef = useRef<HTMLElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(true);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const onPlay = () => setIsPlaying(true);
+    const onPause = () => setIsPlaying(false);
+
+    video.addEventListener("play", onPlay);
+    video.addEventListener("pause", onPause);
+
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (reducedMotion.matches) {
+      video.pause();
+    } else {
+      void video.play().catch(() => setIsPlaying(false));
+    }
+
+    return () => {
+      video.removeEventListener("play", onPlay);
+      video.removeEventListener("pause", onPause);
+    };
+  }, []);
+
+  const togglePlayPause = () => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (video.paused) {
+      void video.play();
+    } else {
+      video.pause();
+    }
+  };
 
   useGSAP(
     () => {
@@ -91,6 +133,8 @@ export function HeroWellnessStack() {
     <div ref={stackRef} className="relative">
       <div className="sticky top-0 z-0 h-svh w-full overflow-hidden">
         <video
+          ref={videoRef}
+          id={HERO_VIDEO_ID}
           autoPlay
           loop
           muted
@@ -120,8 +164,36 @@ export function HeroWellnessStack() {
         />
       </div>
 
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-[5] min-h-svh max-md:h-auto max-md:overflow-visible md:h-svh [&_#Hero]:pointer-events-auto">
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-[5] min-h-svh max-md:h-auto max-md:overflow-visible md:h-svh">
         <Hero />
+        <div aria-live="polite" className="pointer-events-none absolute inset-0 z-[20]">
+          <button
+            type="button"
+            onClick={togglePlayPause}
+            aria-controls={HERO_VIDEO_ID}
+            aria-label={isPlaying ? "Pause video" : "Play video"}
+            className="hero-video-button pointer-events-auto"
+          >
+            <span className="hero-video-button-icon" hidden={!isPlaying}>
+              <Image
+                src={HERO_PAUSE_ICON}
+                alt=""
+                width={12}
+                height={18}
+                aria-hidden
+              />
+            </span>
+            <span className="hero-video-button-icon" hidden={isPlaying}>
+              <Image
+                src={HERO_PLAY_ICON}
+                alt=""
+                width={12}
+                height={18}
+                aria-hidden
+              />
+            </span>
+          </button>
+        </div>
       </div>
 
       <ParallaxPanels

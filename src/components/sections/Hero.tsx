@@ -126,10 +126,10 @@ export function Hero() {
     <section
       id="Hero"
       data-header-theme="light"
-      className="relative z-[5] min-h-svh w-full max-md:overflow-visible md:h-svh md:overflow-hidden"
+      className="relative z-[5] min-h-svh w-full max-md:overflow-visible md:h-svh md:overflow-hidden pointer-events-none"
     >
       <div
-        className={`relative z-10 mx-auto flex min-h-svh w-full items-start pt-32 pb-10 md:h-full md:items-center md:py-[7.5rem] ${containerXlClass}`}
+        className={`relative z-10 mx-auto flex min-h-svh w-full items-start pt-32 pb-10 pointer-events-auto md:h-full md:items-center md:py-[7.5rem] ${containerXlClass}`}
       >
         <div className="flex w-full flex-col gap-12 lg:flex-row lg:items-center lg:justify-between lg:gap-8">
           <div className="max-w-[57.5rem] shrink-0">
