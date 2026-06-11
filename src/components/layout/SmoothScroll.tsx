@@ -48,7 +48,10 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
 
     requestAnimationFrame(() => ScrollTrigger.refresh());
 
+    (window as Window & { __lenis?: Lenis }).__lenis = lenis;
+
     return () => {
+      delete (window as Window & { __lenis?: Lenis }).__lenis;
       gsap.ticker.remove(raf);
       ScrollTrigger.removeEventListener("refresh", onRefresh);
       ScrollTrigger.scrollerProxy(document.documentElement, {});

@@ -15,9 +15,6 @@ export type GalleryItem = {
   variant: GalleryVariant;
 };
 
-const CDN =
-  "https://cdn.prod.website-files.com/69802b78489979b8502afdda";
-
 const variants: GalleryVariant[] = [
   "side-top",
   "middle-card",
@@ -27,42 +24,42 @@ const variants: GalleryVariant[] = [
   "right-bottom",
 ];
 
-/** 6 blog posts — text-free Breathiva wellness covers matched to each theme */
+/** 6 blog posts — custom text-free covers matched to each theme */
 const blogPosts = [
   {
     href: "https://thrivewithmarina.com/your-identity-is-not-what-you-think-it-is-the-neuroscience-of-who-you-are-actually-becoming/",
-    cover: `${CDN}/699d6f822dad791a839b8422_home-gallery-4.webp`,
-    alt: "Quiet meditation practice",
+    cover: "/assets/blog/cover-identity.png",
+    alt: "Quiet reflection on identity and becoming",
     label: "Your Identity Is Not What You Think It Is",
   },
   {
     href: "https://thrivewithmarina.com/the-psychiatrist-who-discovered-that-the-breath-could-do-what-lsd-did/",
-    cover: `${CDN}/699d6711a1d9a34f42c6cd1b_home-gallery-1.webp`,
-    alt: "Breathwork session",
+    cover: "/assets/blog/cover-breath-psychiatrist.png",
+    alt: "Conscious breathwork in a serene studio",
     label: "The Psychiatrist Who Discovered That the Breath Could Do What LSD Did",
   },
   {
     href: "https://thrivewithmarina.com/why-you-feel-constantly-activated-and-what-most-people-still-dont-understand-about-it/",
-    cover: `${CDN}/699d670e0b46c3452f6961a5_home-gallery-5.webp`,
-    alt: "Coaching conversation",
+    cover: "/assets/blog/cover-constantly-activated.png",
+    alt: "Restorative stillness after nervous system activation",
     label: "Why You Feel Constantly Activated",
   },
   {
     href: "https://thrivewithmarina.com/when-the-world-feels-uncertain-what-happens-in-the-brain-and-nervous-system/",
-    cover: `${CDN}/699d670edb82dc0a321fdfa3_home-gallery-2.webp`,
-    alt: "Grounded studio practice",
+    cover: "/assets/blog/cover-uncertain-world.png",
+    alt: "Grounded calm amid uncertainty",
     label: "When the World Feels Uncertain",
   },
   {
     href: "https://thrivewithmarina.com/unconditional-love-is-not-an-ideal/",
-    cover: `${CDN}/699d6f81236b4ac2a2578add_home-gallery-3.webp`,
-    alt: "Group wellness session",
+    cover: "/assets/blog/cover-unconditional-love.png",
+    alt: "Embodied self-compassion and warmth",
     label: "Unconditional Love Is Not an Ideal",
   },
   {
     href: "https://thrivewithmarina.com/theta-brain-waves-the-hidden-key-to-unlocking-your-creative-genius-and-emotional-mastery/",
-    cover: `${CDN}/699d670e4a80df9dcc44573b_home-gallery-6.webp`,
-    alt: "Mindful movement",
+    cover: "/assets/blog/cover-theta-waves.png",
+    alt: "Dreamy meditative state and creative flow",
     label: "Theta Brain Waves",
   },
 ];

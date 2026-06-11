@@ -4,14 +4,17 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
 import { Button } from "@/components/ui/Button";
 import { headerShellClass } from "@/lib/layout";
 import { isExternalNavLink, navLinks } from "@/lib/navigation";
+import { scrollToTop } from "@/lib/scroll";
 import { CALENDLY_CLARITY_CALL_URL } from "@/lib/site";
 
 export function Header() {
+  const pathname = usePathname();
   const headerRef = useRef<HTMLElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -77,6 +80,14 @@ export function Header() {
           <Link
             href="/"
             aria-label="ThriveWithMarina home"
+            onClick={(event) => {
+              setMenuOpen(false);
+
+              if (pathname === "/") {
+                event.preventDefault();
+                scrollToTop();
+              }
+            }}
             className="relative flex size-[56px] shrink-0 items-center justify-center rounded-full bg-white md:size-[72px]"
           >
             <Image
