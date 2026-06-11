@@ -53,6 +53,7 @@ function GalleryCard({
       href={item.href}
       target="_blank"
       rel="noopener noreferrer"
+      aria-label={`Read blog post: ${item.label}`}
       data-gallery-reveal={reveal ? "" : undefined}
       className={`group block overflow-hidden ${wrapperOffset[item.variant] ?? ""}`}
     >
@@ -64,21 +65,35 @@ function GalleryCard({
           alt={item.alt}
           fill
           sizes="(max-width: 767px) 80vw, 33vw"
-          className="gallery-cover-image object-cover"
+          className="gallery-cover-image object-cover transition-transform duration-700 group-hover:scale-[1.03] group-focus-visible:scale-[1.03]"
         />
         <div
           className="gallery-cover-tone pointer-events-none absolute inset-0"
           aria-hidden
         />
-        <div className="absolute inset-0 flex items-center justify-center bg-[#11111199] opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-focus-visible:opacity-100">
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] bg-gradient-to-t from-black/70 via-black/30 to-transparent px-4 pb-4 pt-16">
+          <span className="rt-button-text inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/35 px-4 py-2 text-white backdrop-blur-sm">
+            Read blog
+            <span aria-hidden className="text-sm leading-none">
+              →
+            </span>
+          </span>
+        </div>
+        <div className="absolute inset-0 z-[3] flex flex-col items-center justify-center gap-4 bg-[#11111199] px-6 opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-focus-visible:opacity-100">
           <span className="relative block h-[3.125rem] w-[3.125rem]" aria-hidden>
             <span className="absolute left-1/2 top-1/2 h-px w-[3.125rem] -translate-x-1/2 -translate-y-1/2 bg-white" />
             <span className="absolute left-1/2 top-1/2 h-[3.125rem] w-px -translate-x-1/2 -translate-y-1/2 bg-white" />
+          </span>
+          <span className="rt-button-text text-center text-white">
+            Read full article
           </span>
         </div>
       </div>
       <p className="line-clamp-3 pt-4 font-display text-xl leading-tight tracking-[-0.03125rem] text-white md:text-2xl">
         {item.label}
+      </p>
+      <p className="rt-button-text mt-2 text-grullo/75 transition-colors group-hover:text-white group-focus-visible:text-white">
+        Open blog post
       </p>
     </a>
   );
