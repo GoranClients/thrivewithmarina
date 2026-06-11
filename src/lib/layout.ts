@@ -6,6 +6,9 @@ export const containerClass =
 export const containerXlClass =
   "mx-auto w-full max-w-[111.875rem] px-[0.9375rem] md:px-5";
 
+export const containerXxlClass =
+  "mx-auto w-full max-w-[113.3125rem] px-[0.9375rem] md:px-5";
+
 export const sectionYClass = "py-20 md:py-[var(--section-gap)]";
 
 export const sectionHeaderMbClass = "mb-12 md:mb-[2.8rem]";

@@ -27,12 +27,12 @@ const headingWords = [
 ];
 
 const imageRadius: Record<GalleryVariant, string> = {
-  "side-top": "rounded-tl-[var(--radius-pill)]",
-  "side-bottom": "rounded-bl-[var(--radius-pill)]",
-  "middle-card": "",
-  "middle-bottom": "",
-  "right-top": "rounded-tr-[var(--radius-pill)]",
-  "right-bottom": "rounded-br-[var(--radius-pill)]",
+  "side-top": "max-md:rounded-none rounded-tl-[var(--radius-pill)]",
+  "side-bottom": "max-md:rounded-none rounded-bl-[var(--radius-pill)]",
+  "middle-card": "max-md:rounded-none",
+  "middle-bottom": "max-md:rounded-none",
+  "right-top": "max-md:rounded-none rounded-tr-[var(--radius-pill)]",
+  "right-bottom": "max-md:rounded-none rounded-br-[var(--radius-pill)]",
 };
 
 const wrapperOffset: Partial<Record<GalleryVariant, string>> = {
@@ -197,13 +197,9 @@ export function GalleryV2() {
           className="pt-[1.875rem] md:pt-[14rem]"
         />
 
-        <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 md:hidden">
+        <div className="flex flex-col gap-[2.125rem] pt-[1.875rem] md:hidden">
           {galleryItems.map((item) => (
-            <div
-              key={item.id}
-              data-gallery-reveal
-              className="w-[80vw] shrink-0 snap-center"
-            >
+            <div key={item.id} data-gallery-reveal>
               <GalleryCard item={item} />
             </div>
           ))}

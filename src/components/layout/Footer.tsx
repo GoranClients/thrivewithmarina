@@ -1,188 +1,350 @@
 "use client";
 
+import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { type FormEvent, useState } from "react";
 
-import { Button } from "@/components/ui/Button";
-import { containerClass } from "@/lib/layout";
-import { navLinks, socialLinks, utilityLinks } from "@/lib/navigation";
+import { containerXxlClass } from "@/lib/layout";
+import { INSTAGRAM_URL } from "@/lib/site";
 
-function ScrollToTopLink({ className = "" }: { className?: string }) {
+const CDN =
+  "https://cdn.prod.website-files.com/69802b78489979b8502afdda";
+
+const FOOTER_MIDDLE_IMAGE = `${CDN}/6981b74698d35813deafc827_footer-middle-image.webp`;
+const FOOTER_BTN_ICON = `${CDN}/6981b0c4ff1f1bb61cf35015_rt-footer-button-image.svg`;
+const FOOTER_BTN_ICON_DARK = `${CDN}/69c230aed591903034ea4e8b_button-dark-icon.svg`;
+
+const studioLinks = [
+  { label: "About Marina", href: "#Experts" },
+  { label: "Reviews", href: "#Reviews" },
+  { label: "Memberships", href: "#Memberships" },
+  { label: "Book a call", href: "#Contact" },
+] as const;
+
+const footerNavLinks = [
+  { label: "Privacy", href: "/privacy" },
+  { label: "Terms", href: "/terms" },
+  { label: "404", href: "/404" },
+] as const;
+
+const socialLinks = [
+  {
+    label: "Facebook",
+    href: INSTAGRAM_URL,
+    light: `${CDN}/69c52765c627bfe8adcffe07_lite-facebook.svg`,
+    gold: `${CDN}/69c5275e7343d14538987136_gold-facebook.svg`,
+    dark: `${CDN}/69b946657d8d9acc7e550c2c_facebook.svg`,
+    darkHover: `${CDN}/69b9485766f83605a19db6e6_facebook-dark.svg`,
+  },
+  {
+    label: "Instagram",
+    href: INSTAGRAM_URL,
+    light: `${CDN}/69c52762a3c09cda57ecacf7_lite-instagram.svg`,
+    gold: `${CDN}/69c5275e17a5f47b25dbb88c_gold-instagram.svg`,
+    dark: `${CDN}/69b9466530d2269007813b0e_instagram.svg`,
+    darkHover: `${CDN}/69b948571b58196e0611fa40_instagram-dark.svg`,
+  },
+  {
+    label: "X",
+    href: INSTAGRAM_URL,
+    light: `${CDN}/69c52762b83d6695d9975832_lite-x-icon.svg`,
+    gold: `${CDN}/69c5275faa607aaed58ec2fe_gold-xicon.svg`,
+    dark: `${CDN}/69b94665e7b68e67d627d948_x-icon.svg`,
+    darkHover: `${CDN}/69b94857a190bb1d9184dda3_x-icon-dark.svg`,
+  },
+  {
+    label: "LinkedIn",
+    href: INSTAGRAM_URL,
+    light: `${CDN}/69c5276581f2a44b645e7d95_lite-linkdin.svg`,
+    gold: `${CDN}/69c5275ed610c4c2ee775ec9_gold-linkdin.svg`,
+    dark: `${CDN}/69b946656086b102dad155dd_linkdin.svg`,
+    darkHover: `${CDN}/69b948579069879b3bf7ce74_linkdin-dark.svg`,
+  },
+] as const;
+
+function FooterHeading({ children }: { children: ReactNode }) {
   return (
-    <Link
-      href="#Hero"
-      aria-label="Scroll to top"
-      className={`flex size-[4.5rem] shrink-0 items-center justify-center rounded-full bg-white text-marsh transition-colors hover:bg-platinum ${className}`}
-    >
-      <svg
-        width="25"
-        height="25"
-        viewBox="0 0 25 25"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        aria-hidden
-      >
-        <path
-          d="M5.71373 14.787L12.501 7.99975L19.2863 14.787"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-    </Link>
+    <div className="font-display text-xl leading-[1.3] font-medium tracking-[-0.01875rem] text-soft-black">
+      {children}
+    </div>
   );
 }
 
-function InstagramIcon() {
-  return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
-    </svg>
-  );
+function FooterDash({ className = "bg-black" }: { className?: string }) {
+  return <div className={`h-px w-[2.6875rem] ${className}`} aria-hidden />;
 }
 
-function FooterNavColumn({
-  title,
-  links,
+function FooterSocialIcon({
+  href,
+  label,
+  primary,
+  hover,
 }: {
-  title: string;
-  links: readonly { label: string; href: string }[];
+  href: string;
+  label: string;
+  primary: string;
+  hover: string;
 }) {
   return (
-    <div>
-      <h3 className="text-base font-medium tracking-[-0.02em] text-grullo">
-        {title}
-      </h3>
-      <ul className="mt-5 flex flex-col gap-4">
-        {links.map((link) => (
-          <li key={link.href}>
-            <Link
-              href={link.href}
-              className="text-sm tracking-[-0.02em] text-vista-white transition-colors hover:text-white"
-            >
-              {link.label}
-            </Link>
-          </li>
-        ))}
-      </ul>
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={label}
+      className="group relative flex max-w-5 flex-1 items-center justify-center md:flex-none"
+    >
+      <Image
+        src={primary}
+        alt=""
+        width={20}
+        height={20}
+        className="transition-opacity duration-200 group-hover:opacity-0"
+      />
+      <Image
+        src={hover}
+        alt=""
+        width={20}
+        height={20}
+        className="absolute opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+      />
+    </a>
+  );
+}
+
+function FooterSocialList({ variant }: { variant: "light" | "dark" }) {
+  return (
+    <div className="flex items-center gap-3.5">
+      {socialLinks.map((social) => (
+        <FooterSocialIcon
+          key={social.label}
+          href={social.href}
+          label={social.label}
+          primary={variant === "light" ? social.light : social.dark}
+          hover={variant === "light" ? social.gold : social.darkHover}
+        />
+      ))}
+    </div>
+  );
+}
+
+function FooterNavDots() {
+  return (
+    <nav
+      aria-label="Footer utility"
+      className="flex items-center justify-center gap-2.5 pt-[3.125rem] max-lg:hidden"
+    >
+      {footerNavLinks.map((link, index) => (
+        <span key={link.href} className="flex items-center gap-2.5">
+          <Link href={link.href} className="footer-link-v1 text-sm">
+            {link.label}
+          </Link>
+          {index < footerNavLinks.length - 1 ? (
+            <span
+              className="size-[0.3125rem] rounded-full bg-platinum"
+              aria-hidden
+            />
+          ) : null}
+        </span>
+      ))}
+    </nav>
+  );
+}
+
+function FooterCredits({ className = "" }: { className?: string }) {
+  return (
+    <div className={`flex flex-col gap-2.5 ${className}`}>
+      <p className="text-sm text-platinum">
+        Designed by{" "}
+        <a
+          href="https://goranflow.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="footer-link-v1"
+        >
+          GoranFlow
+        </a>
+      </p>
+      <p className="text-sm text-platinum">
+        Production by{" "}
+        <a
+          href="https://goranflow.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="footer-link-v1"
+        >
+          GoranFlow
+        </a>
+      </p>
     </div>
   );
 }
 
 export function Footer() {
-  const [subscribed, setSubscribed] = useState(false);
-
-  const handleSubscribe = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const email = new FormData(event.currentTarget).get("email");
-    console.log({ newsletter: email });
-    setSubscribed(true);
-    event.currentTarget.reset();
-  };
-
   return (
-    <div data-header-theme="light" className="relative z-0 bg-marsh pt-20">
-      <footer className="pb-5 pt-[8.75rem] text-vista-white">
-        <div className={containerClass}>
-          <div className="flex flex-col gap-10 border-b border-white/15 pb-16 lg:flex-row lg:items-end lg:justify-between lg:pb-20">
-            <div className="w-full max-w-[30rem]">
-              <h2 className="font-display text-[clamp(2rem,5vw,3.5rem)] italic leading-[1.05] tracking-[-0.04em] text-white">
-                Subscribe to news
-              </h2>
-
-              <form onSubmit={handleSubscribe} className="relative mt-8">
-                <label className="sr-only" htmlFor="newsletter-email">
-                  Email
-                </label>
-                <input
-                  id="newsletter-email"
-                  name="email"
-                  type="email"
-                  required
-                  autoComplete="email"
-                  placeholder="Email"
-                  className="h-[4.5625rem] w-full rounded-[10px] bg-platinum pr-44 pl-9 text-base text-marsh outline-none placeholder:text-grullo focus-visible:ring-2 focus-visible:ring-burlywood/40"
-                />
-                <Button
-                  type="submit"
-                  variant="green"
-                  className="absolute top-2 right-2 min-w-[9.5rem] px-8 py-3"
-                >
-                  Subscribe
-                </Button>
-                {subscribed ? (
-                  <p className="mt-3 text-sm text-platinum" role="status">
-                    Thank you! Your submission has been received!
-                  </p>
-                ) : null}
-              </form>
+    <footer data-header-theme="light" className="footer-breathiva relative pt-[7.1625rem] pb-[2.4375rem] max-lg:pt-[3.4375rem] max-lg:pb-[1.5625rem]">
+      <div className={containerXxlClass}>
+        <div className="relative flex flex-col max-lg:gap-0">
+          <div className="mb-20 flex items-center justify-between max-lg:mb-0 max-lg:grid max-lg:grid-cols-2 max-lg:gap-5 max-lg:pb-[6.9rem]">
+            <div className="flex max-w-[10.5625rem] flex-col gap-[0.9rem] max-lg:flex-none">
+              <div className="relative pl-[3.125rem] max-lg:pl-[2.4rem]">
+                <FooterDash className="absolute top-1/2 left-0 -translate-y-1/2 bg-black max-lg:w-8" />
+                <FooterHeading>Our studio</FooterHeading>
+              </div>
+              <nav
+                aria-label="Footer studio"
+                className="flex flex-col gap-5 max-lg:gap-[0.6875rem]"
+              >
+                {studioLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="font-display text-xl leading-[1.3] font-medium tracking-[-0.01875rem] text-soft-black transition-colors hover:text-shadow-gold"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </nav>
             </div>
 
-            <ScrollToTopLink className="hidden lg:flex" />
+            <div
+              className="hidden h-px w-full bg-black/20 max-lg:col-span-2 max-lg:block lg:hidden"
+              aria-hidden
+            />
+
+            <div className="-mt-[0.3125rem] flex flex-col items-end max-lg:col-span-1 max-lg:mt-0 max-lg:items-start max-lg:gap-5">
+              <div className="flex items-start justify-between gap-[3.75rem] pb-[2.8rem] max-lg:w-full max-lg:gap-5 max-lg:pb-0">
+                <div className="flex max-w-[10rem] flex-1 flex-col gap-[0.4rem] lg:max-w-none">
+                  <p className="m-0 text-xl leading-[1.3] font-medium tracking-[-0.01875rem] text-soft-black max-lg:text-white">
+                    Monday to Thursday
+                  </p>
+                  <p className="text-base text-soft-black max-lg:text-white">
+                    6:00 AM — 8:00 PM
+                  </p>
+                  <FooterDash className="mt-[1.1rem] max-lg:mt-[0.9rem] max-lg:bg-white" />
+                </div>
+                <div className="flex max-w-[10.9375rem] flex-col gap-[0.4rem] max-lg:max-w-[11.4rem]">
+                  <p className="m-0 text-xl leading-[1.3] font-medium tracking-[-0.01875rem] text-soft-black max-lg:text-white">
+                    Friday &amp; Saturday
+                  </p>
+                  <p className="text-base text-soft-black max-lg:text-white">
+                    6:00 AM — 4:00 PM
+                  </p>
+                  <p className="m-0 pt-[0.3rem] text-xl leading-[1.3] font-medium tracking-[-0.01875rem] text-soft-black max-lg:pt-0 max-lg:text-white">
+                    Sunday closed
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex w-full justify-center max-lg:justify-start">
+                <Link
+                  href="#Contact"
+                  className="group flex items-center gap-[0.9375rem] border border-grullo bg-white px-[0.875rem] py-2.5 transition-colors hover:border-shadow-gold"
+                >
+                  <span className="rt-button-text text-soft-black uppercase">
+                    start your wellness journey
+                  </span>
+                  <span className="relative block size-[29px]">
+                    <Image
+                      src={FOOTER_BTN_ICON}
+                      alt=""
+                      width={19}
+                      height={29}
+                      className="transition-opacity duration-200 group-hover:opacity-0"
+                    />
+                    <Image
+                      src={FOOTER_BTN_ICON_DARK}
+                      alt=""
+                      width={19}
+                      height={29}
+                      className="absolute inset-0 m-auto opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+                    />
+                  </span>
+                </Link>
+              </div>
+            </div>
+
+            <div className="hidden max-w-[11.9rem] flex-col gap-6 max-lg:col-span-1 max-lg:flex lg:hidden">
+              <div className="flex max-w-[11.625rem] flex-col gap-[1.35rem]">
+                <FooterHeading>Location</FooterHeading>
+                <p className="text-base text-soft-black">
+                  Dubai, United Arab Emirates
+                </p>
+              </div>
+              <div className="flex flex-col gap-[1.35rem]">
+                <FooterHeading>Follow us</FooterHeading>
+                <FooterSocialList variant="dark" />
+              </div>
+            </div>
           </div>
 
-          <div className="mt-16 grid gap-12 lg:grid-cols-[minmax(0,310px)_1fr_auto] lg:items-start lg:gap-8">
-            <div>
-              <div className="flex items-start justify-between gap-4">
-                <Link href="/" aria-label="ThriveWithMarina home">
-                  <Image
-                    src="/assets/brand/logo.svg"
-                    alt=""
-                    width={72}
-                    height={72}
-                    className="size-[72px] brightness-0 invert"
-                  />
-                </Link>
-                <ScrollToTopLink className="lg:hidden" />
+          <div className="relative hidden justify-center md:flex">
+            <div className="-ml-[1.375rem]">
+              <div className="footer-large-text">Marina</div>
+            </div>
+          </div>
+
+          <div className="relative z-[4] hidden items-end justify-between lg:flex">
+            <div className="flex gap-6">
+              <div className="flex max-w-[11.625rem] flex-col gap-[1.35rem]">
+                <FooterHeading>
+                  <span className="text-white">Location</span>
+                </FooterHeading>
+                <p className="text-base text-white">
+                  Dubai, United Arab Emirates
+                </p>
               </div>
-              <p className="mt-8 max-w-[18rem] text-sm leading-[1.5] tracking-[-0.02em] text-vista-white/80">
-                Breathwork & holistic coaching for visionary women in Dubai.
-              </p>
+              <div className="flex flex-col gap-[1.35rem]">
+                <FooterHeading>
+                  <span className="text-white">Follow us</span>
+                </FooterHeading>
+                <FooterSocialList variant="light" />
+              </div>
+            </div>
+            <FooterCredits />
+          </div>
+
+          <FooterNavDots />
+
+          <div className="order-last flex flex-col items-center lg:hidden">
+            <div className="relative flex w-full flex-col items-center">
+              <div className="footer-large-text text-center">Marina</div>
+              <div className="pointer-events-none relative -mt-8 w-full max-w-[926px]">
+                <Image
+                  src={FOOTER_MIDDLE_IMAGE}
+                  alt=""
+                  width={926}
+                  height={926}
+                  className="h-auto w-full object-contain"
+                  sizes="(max-width: 767px) 100vw, 728px"
+                />
+              </div>
             </div>
 
             <nav
-              aria-label="Footer"
-              className="flex flex-wrap gap-12 sm:gap-20 lg:justify-center"
+              aria-label="Footer utility mobile"
+              className="flex items-center justify-center gap-2.5 pt-[1.875rem]"
             >
-              <FooterNavColumn title="Menu" links={navLinks} />
-              <FooterNavColumn title="Utility pages" links={utilityLinks} />
+              {footerNavLinks.map((link, index) => (
+                <span key={link.href} className="flex items-center gap-2.5">
+                  <Link href={link.href} className="footer-link-v1 text-sm">
+                    {link.label}
+                  </Link>
+                  {index < footerNavLinks.length - 1 ? (
+                    <span
+                      className="size-[0.3125rem] rounded-full bg-platinum"
+                      aria-hidden
+                    />
+                  ) : null}
+                </span>
+              ))}
             </nav>
 
-            <ul className="flex gap-2.5 lg:justify-end">
-              {socialLinks.map((social) => (
-                <li key={social.href}>
-                  <a
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={social.label}
-                    className="flex size-[4.5rem] items-center justify-center rounded-full bg-kaitoke-green text-white transition-colors hover:bg-burlywood hover:text-marsh"
-                  >
-                    <InstagramIcon />
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="mt-16 flex flex-col gap-4 border-t border-white/15 pt-8 text-sm text-grullo md:flex-row md:items-center md:justify-between">
-            <p>© 2026 ThriveWithMarina</p>
-            <p>
-              by{" "}
-              <a
-                href="https://goranflow.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-vista-white underline-offset-2 hover:text-white hover:underline"
-              >
-                GoranFLow
-              </a>
-            </p>
+            <div className="flex flex-col items-center gap-[0.2rem] pt-2.5">
+              <FooterCredits className="items-center text-center" />
+            </div>
           </div>
         </div>
-      </footer>
-    </div>
+      </div>
+    </footer>
   );
 }

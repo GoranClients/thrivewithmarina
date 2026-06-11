@@ -1,6 +1,7 @@
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { BookingV2 } from "@/components/sections/BookingV2";
+import { Faq } from "@/components/sections/Faq";
 import { FreeBreathwork } from "@/components/sections/FreeBreathwork";
 import { GalleryV2 } from "@/components/sections/GalleryV2";
 import { HeroWellnessStack } from "@/components/sections/HeroWellnessStack";
@@ -20,6 +21,7 @@ export default function Home() {
         <GalleryV2 />
         <Memberships />
         <BookingV2 />
+        <Faq />
       </main>
       <Footer />
     </>

@@ -30,20 +30,37 @@ function PlanCard({
     <article
       data-membership-card
       className="relative flex min-h-[36rem] flex-col justify-between overflow-hidden rounded-[var(--radius-card)] p-8 text-white md:min-h-[42rem] md:p-10"
-      style={{
-        backgroundImage: `radial-gradient(circle farthest-corner at 50% 50%, rgba(31,42,28,0) 0%, rgba(31,42,28,0.74) 65%, #1f2a1c 99%), url(${background})`,
-        backgroundPosition: "center",
-        backgroundSize: "cover",
-      }}
     >
-      <div>
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: `url(${background})` }}
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle farthest-corner at 50% 35%, rgba(31,42,28,0) 0%, rgba(31,42,28,0.55) 58%, #1f2a1c 99%)",
+        }}
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-[78%] md:h-[74%]"
+        style={{
+          backgroundImage:
+            "linear-gradient(to top, #1f2a1c 0%, rgba(31,42,28,0.96) 34%, rgba(31,42,28,0.78) 58%, rgba(31,42,28,0.2) 82%, transparent 100%)",
+        }}
+        aria-hidden
+      />
+
+      <div className="relative z-10">
         <div className="rt-button-text text-burlywood">{plan.name}</div>
         <h3 className="mt-8 font-display text-[clamp(1.75rem,3vw,2.25rem)] leading-tight">
           {plan.price}
         </h3>
       </div>
 
-      <ul className="mt-10 flex flex-col gap-4 border-t border-white/20 pt-10">
+      <ul className="relative z-10 mt-10 flex flex-col gap-4 border-t border-white/20 pt-10">
         {plan.features.map((feature) => (
           <li
             key={feature}
@@ -58,7 +75,7 @@ function PlanCard({
         ))}
       </ul>
 
-      <div className="mt-10">
+      <div className="relative z-10 mt-10">
         <Button href="#" variant="gold">
           Explore this path
         </Button>
