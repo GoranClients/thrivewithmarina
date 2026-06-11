@@ -8,5 +8,11 @@ export const INSTAGRAM_URL = "https://www.instagram.com/marinasavic1111/";
 /** Future section: free breathwork guides & downloads */
 export const FREE_BREATHWORK_ANCHOR = "#FreeBreathwork";
 
+export const BLOG_ANCHOR = "#Blog";
+
+export const SOUL_LED_BODY_COACHING_ANCHOR = "#Soul-led-Body-Coaching";
+
+export const HEARTLEAD_MENTORING_ANCHOR = "#HeartLead-Mentoring";
+
 export const TESTIMONIALS_SOURCE_URL =
   "https://thrivewithmarina.com/testimonials/";

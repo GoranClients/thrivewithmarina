@@ -28,6 +28,7 @@ function PlanCard({
 }) {
   return (
     <article
+      id={plan.anchorId}
       data-membership-card
       className="relative flex min-h-[36rem] flex-col justify-between overflow-hidden rounded-[var(--radius-card)] p-8 text-white md:min-h-[42rem] md:p-10"
     >

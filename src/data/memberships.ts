@@ -1,5 +1,6 @@
 export type MembershipPlan = {
   id: string;
+  anchorId: string;
   name: string;
   price: string;
   features: string[];
@@ -9,6 +10,7 @@ export type MembershipPlan = {
 export const membershipPlans: MembershipPlan[] = [
   {
     id: "soul-led",
+    anchorId: "Soul-led-Body-Coaching",
     name: "Soul-Led Body Coaching",
     price: "Transform your body. Elevate your vitality.",
     features: [
@@ -21,6 +23,7 @@ export const membershipPlans: MembershipPlan[] = [
   },
   {
     id: "heartlead",
+    anchorId: "HeartLead-Mentoring",
     name: "HeartLead Mentoring",
     price: "Rewire your nervous system. Lead from the inside out.",
     features: [

@@ -15,7 +15,7 @@ import { useRef } from "react";
 
 
 import { Button } from "@/components/ui/Button";
-
+import { StatCounter } from "@/components/ui/StatCounter";
 import { stats } from "@/data/stats";
 
 import { containerClass } from "@/lib/layout";
@@ -257,29 +257,24 @@ export function Instructors() {
 
 
           <div
-
             data-instructors-reveal
-
+            data-stats-grid
             className="grid grid-cols-2 gap-10 md:grid-cols-4 md:gap-8"
-
           >
-
-            {stats.map((stat) => (
-
+            {stats.map((stat, index) => (
               <div key={stat.id} className="text-center">
-
                 <p className="font-display text-[clamp(3.125rem,8vw,6rem)] leading-none text-marsh">
-
-                  {stat.value}
-
+                  <StatCounter
+                    target={stat.target}
+                    suffix={stat.suffix}
+                    prefix={stat.prefix}
+                    displayValue={stat.value}
+                    delay={index * 0.12}
+                  />
                 </p>
-
                 <p className="rt-button-text mt-6 text-grullo">{stat.label}</p>
-
               </div>
-
             ))}
-
           </div>
 
         </div>

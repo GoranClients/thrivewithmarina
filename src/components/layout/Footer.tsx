@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { containerXxlClass } from "@/lib/layout";
+import { isExternalNavLink, navLinks } from "@/lib/navigation";
 import { INSTAGRAM_URL } from "@/lib/site";
 
 const CDN =
@@ -13,13 +14,6 @@ const CDN =
 const FOOTER_MIDDLE_IMAGE = `${CDN}/6981b74698d35813deafc827_footer-middle-image.webp`;
 const FOOTER_BTN_ICON = `${CDN}/6981b0c4ff1f1bb61cf35015_rt-footer-button-image.svg`;
 const FOOTER_BTN_ICON_DARK = `${CDN}/69c230aed591903034ea4e8b_button-dark-icon.svg`;
-
-const studioLinks = [
-  { label: "About Marina", href: "#Experts" },
-  { label: "Reviews", href: "#Reviews" },
-  { label: "Memberships", href: "#Memberships" },
-  { label: "Book a call", href: "#Contact" },
-] as const;
 
 const footerNavLinks = [
   { label: "Privacy", href: "/privacy" },
@@ -68,10 +62,6 @@ function FooterHeading({ children }: { children: ReactNode }) {
       {children}
     </div>
   );
-}
-
-function FooterDash({ className = "bg-black" }: { className?: string }) {
-  return <div className={`h-px w-[2.6875rem] ${className}`} aria-hidden />;
 }
 
 function FooterSocialIcon({
@@ -184,86 +174,52 @@ export function Footer() {
     <footer data-header-theme="light" className="footer-breathiva relative pt-[7.1625rem] pb-[2.4375rem] max-lg:pt-[3.4375rem] max-lg:pb-[1.5625rem]">
       <div className={containerXxlClass}>
         <div className="relative flex flex-col max-lg:gap-0">
-          <div className="mb-20 flex items-center justify-between max-lg:mb-0 max-lg:grid max-lg:grid-cols-2 max-lg:gap-5 max-lg:pb-[6.9rem]">
-            <div className="flex max-w-[10.5625rem] flex-col gap-[0.9rem] max-lg:flex-none">
-              <div className="relative pl-[3.125rem] max-lg:pl-[2.4rem]">
-                <FooterDash className="absolute top-1/2 left-0 -translate-y-1/2 bg-black max-lg:w-8" />
-                <FooterHeading>Our studio</FooterHeading>
-              </div>
-              <nav
-                aria-label="Footer studio"
-                className="flex flex-col gap-5 max-lg:gap-[0.6875rem]"
-              >
-                {studioLinks.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className="font-display text-xl leading-[1.3] font-medium tracking-[-0.01875rem] text-soft-black transition-colors hover:text-shadow-gold"
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-              </nav>
-            </div>
-
-            <div
-              className="hidden h-px w-full bg-black/20 max-lg:col-span-2 max-lg:block lg:hidden"
-              aria-hidden
-            />
-
-            <div className="-mt-[0.3125rem] flex flex-col items-end max-lg:col-span-1 max-lg:mt-0 max-lg:items-start max-lg:gap-5">
-              <div className="flex items-start justify-between gap-[3.75rem] pb-[2.8rem] max-lg:w-full max-lg:gap-5 max-lg:pb-0">
-                <div className="flex max-w-[10rem] flex-1 flex-col gap-[0.4rem] lg:max-w-none">
-                  <p className="m-0 text-xl leading-[1.3] font-medium tracking-[-0.01875rem] text-soft-black max-lg:text-white">
-                    Monday to Thursday
-                  </p>
-                  <p className="text-base text-soft-black max-lg:text-white">
-                    6:00 AM — 8:00 PM
-                  </p>
-                  <FooterDash className="mt-[1.1rem] max-lg:mt-[0.9rem] max-lg:bg-white" />
-                </div>
-                <div className="flex max-w-[10.9375rem] flex-col gap-[0.4rem] max-lg:max-w-[11.4rem]">
-                  <p className="m-0 text-xl leading-[1.3] font-medium tracking-[-0.01875rem] text-soft-black max-lg:text-white">
-                    Friday &amp; Saturday
-                  </p>
-                  <p className="text-base text-soft-black max-lg:text-white">
-                    6:00 AM — 4:00 PM
-                  </p>
-                  <p className="m-0 pt-[0.3rem] text-xl leading-[1.3] font-medium tracking-[-0.01875rem] text-soft-black max-lg:pt-0 max-lg:text-white">
-                    Sunday closed
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex w-full justify-center max-lg:justify-start">
+          <div className="mb-20 flex items-start justify-between gap-8 max-lg:mb-0 max-lg:flex-col max-lg:items-start max-lg:gap-8 max-lg:pb-[6.9rem]">
+            <nav
+              aria-label="Footer primary"
+              className="flex max-w-[15.5rem] flex-col gap-5 max-lg:max-w-none max-lg:gap-[0.6875rem]"
+            >
+              {navLinks.map((link) => (
                 <Link
-                  href="#Contact"
-                  className="group flex items-center gap-[0.9375rem] border border-grullo bg-white px-[0.875rem] py-2.5 transition-colors hover:border-shadow-gold"
+                  key={link.label}
+                  href={link.href}
+                  {...(isExternalNavLink(link.href)
+                    ? { target: "_blank", rel: "noopener noreferrer" }
+                    : {})}
+                  className="font-display text-xl leading-[1.3] font-medium tracking-[-0.01875rem] text-soft-black transition-colors hover:text-shadow-gold max-lg:text-white"
                 >
-                  <span className="rt-button-text text-soft-black uppercase">
-                    start your wellness journey
-                  </span>
-                  <span className="relative block size-[29px]">
-                    <Image
-                      src={FOOTER_BTN_ICON}
-                      alt=""
-                      width={19}
-                      height={29}
-                      className="transition-opacity duration-200 group-hover:opacity-0"
-                    />
-                    <Image
-                      src={FOOTER_BTN_ICON_DARK}
-                      alt=""
-                      width={19}
-                      height={29}
-                      className="absolute inset-0 m-auto opacity-0 transition-opacity duration-200 group-hover:opacity-100"
-                    />
-                  </span>
+                  {link.label}
                 </Link>
-              </div>
-            </div>
+              ))}
+            </nav>
 
-            <div className="hidden max-w-[11.9rem] flex-col gap-6 max-lg:col-span-1 max-lg:flex lg:hidden">
+            <div className="flex flex-col items-end gap-8 max-lg:w-full max-lg:items-start">
+            <Link
+              href="#Contact"
+              className="group flex items-center gap-[0.9375rem] border border-grullo bg-white px-[0.875rem] py-2.5 transition-colors hover:border-shadow-gold"
+            >
+              <span className="rt-button-text text-soft-black uppercase">
+                start your wellness journey
+              </span>
+              <span className="relative block size-[29px]">
+                <Image
+                  src={FOOTER_BTN_ICON}
+                  alt=""
+                  width={19}
+                  height={29}
+                  className="transition-opacity duration-200 group-hover:opacity-0"
+                />
+                <Image
+                  src={FOOTER_BTN_ICON_DARK}
+                  alt=""
+                  width={19}
+                  height={29}
+                  className="absolute inset-0 m-auto opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+                />
+              </span>
+            </Link>
+
+            <div className="hidden max-w-[11.9rem] flex-col gap-6 max-lg:flex lg:hidden">
               <div className="flex max-w-[11.625rem] flex-col gap-[1.35rem]">
                 <FooterHeading>Location</FooterHeading>
                 <p className="text-base text-soft-black">
@@ -274,6 +230,7 @@ export function Footer() {
                 <FooterHeading>Follow us</FooterHeading>
                 <FooterSocialList variant="dark" />
               </div>
+            </div>
             </div>
           </div>
 

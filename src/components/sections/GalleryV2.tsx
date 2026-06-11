@@ -129,6 +129,7 @@ export function GalleryV2() {
   return (
     <section
       ref={sectionRef}
+      id="Blog"
       data-header-theme="light"
       className="bg-marsh py-[15rem] text-grullo"
       style={{

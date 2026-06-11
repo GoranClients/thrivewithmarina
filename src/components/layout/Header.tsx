@@ -8,7 +8,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { Button } from "@/components/ui/Button";
 import { headerShellClass } from "@/lib/layout";
-import { navLinks } from "@/lib/navigation";
+import { isExternalNavLink, navLinks } from "@/lib/navigation";
 import { CALENDLY_CLARITY_CALL_URL } from "@/lib/site";
 
 export function Header() {
@@ -90,14 +90,17 @@ export function Header() {
 
           <nav
             aria-label="Primary"
-            className="hidden items-center gap-8 lg:flex"
+            className="hidden min-w-0 flex-1 items-center justify-end gap-4 xl:flex xl:gap-5"
           >
-            <ul className="flex items-center gap-8">
+            <ul className="flex min-w-0 flex-1 flex-wrap items-center justify-end gap-x-4 gap-y-2 xl:gap-x-5">
               {navLinks.map((link) => (
-                <li key={link.href}>
+                <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="header-link text-lg font-medium tracking-[-0.02em] transition-colors"
+                    {...(isExternalNavLink(link.href)
+                      ? { target: "_blank", rel: "noopener noreferrer" }
+                      : {})}
+                    className="header-link whitespace-nowrap text-[0.9375rem] font-medium tracking-[-0.02em] transition-colors xl:text-base"
                   >
                     {link.label}
                   </Link>
@@ -107,7 +110,7 @@ export function Header() {
             <Button
               href={CALENDLY_CLARITY_CALL_URL}
               variant="primary"
-              className="px-8 py-3 text-base"
+              className="shrink-0 px-6 py-2.5 text-sm xl:px-8 xl:py-3 xl:text-base"
             >
               Book a Clarity Call
             </Button>
@@ -116,23 +119,15 @@ export function Header() {
           <button
             type="button"
             aria-expanded={menuOpen}
-            aria-label={menuOpen ? "Close menu" : "Open menu"}
-            onClick={() => setMenuOpen((open) => !open)}
-            className="relative flex size-[56px] shrink-0 items-center justify-center rounded-full bg-white lg:hidden"
+            aria-label="Open menu"
+            onClick={() => setMenuOpen(true)}
+            className={`relative flex size-[56px] shrink-0 items-center justify-center rounded-full bg-white lg:hidden ${menuOpen ? "pointer-events-none opacity-0" : ""}`}
           >
             <span className="sr-only">Menu</span>
-            <span
-              className={`flex w-5 flex-col gap-1.5 ${menuOpen ? "gap-0" : ""}`}
-            >
-              <span
-                className={`block h-0.5 w-full bg-marsh transition-transform duration-300 ${menuOpen ? "translate-y-2 rotate-45" : ""}`}
-              />
-              <span
-                className={`block h-0.5 w-full bg-marsh transition-opacity duration-300 ${menuOpen ? "opacity-0" : ""}`}
-              />
-              <span
-                className={`block h-0.5 w-full bg-marsh transition-transform duration-300 ${menuOpen ? "-translate-y-2 -rotate-45" : ""}`}
-              />
+            <span className="flex w-5 flex-col gap-1.5">
+              <span className="block h-0.5 w-full bg-marsh" />
+              <span className="block h-0.5 w-full bg-marsh" />
+              <span className="block h-0.5 w-full bg-marsh" />
             </span>
           </button>
         </div>
@@ -152,11 +147,33 @@ export function Header() {
           menuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
+        <button
+          type="button"
+          aria-label="Close menu"
+          onClick={() => setMenuOpen(false)}
+          className="absolute top-6 right-6 flex size-12 items-center justify-center rounded-full text-marsh transition-colors hover:bg-marsh/5"
+        >
+          <svg
+            aria-hidden="true"
+            viewBox="0 0 24 24"
+            className="size-6"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.75"
+            strokeLinecap="round"
+          >
+            <path d="M6 6l12 12M18 6L6 18" />
+          </svg>
+        </button>
+
         <ul className="flex flex-col gap-6">
           {navLinks.map((link) => (
-            <li key={link.href}>
+            <li key={link.label}>
               <Link
                 href={link.href}
+                {...(isExternalNavLink(link.href)
+                  ? { target: "_blank", rel: "noopener noreferrer" }
+                  : {})}
                 onClick={() => setMenuOpen(false)}
                 className="text-2xl font-display text-marsh"
               >
